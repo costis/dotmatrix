@@ -1,0 +1,9 @@
+set guioptions-=m "No menu
+set guioptions-=T "No toolbar
+set mouse=""
+
+" hack to vanish scrollbars
+set guioptions+=lrb
+set guioptions-=lrb
+
+colorscheme vividchalk
