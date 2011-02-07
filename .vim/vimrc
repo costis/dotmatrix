@@ -2,8 +2,8 @@
 " Needed on some linux distros.
 " see http://www.adamlowe.me/2009/12/vim-destroys-all-other-rails-editors.html
 filetype off 
-call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
 " Pathogen init ends
 
 set nocompatible
@@ -21,9 +21,15 @@ set showcmd " show partial command you are typing
 set smarttab
 set autoindent
 
+" Allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
 " put all vim's temporary file out of current dir
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+
+" Keymaps
+inoremap jj <ESC>
 
 " set the leader key
 let mapleader = ","
@@ -46,6 +52,9 @@ set statusline+=%*
 map <silent> <A-1> :NERDTreeToggle<CR> 
 " Close NERDTree when opening a file
 let g:NERDTreeQuitOnOpen = 1 
+
+" Size of window
+let g:NERDTreeWinSize = 40
 
 " Settings for minbufExplorer
 let g:miniBufExplMapWindowNavVim = 1

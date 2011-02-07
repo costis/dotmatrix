@@ -7,3 +7,10 @@ set guioptions+=lrb
 set guioptions-=lrb
 
 colorscheme vividchalk
+
+" Ctrl-S for saving
+imap <c-s> <Esc><c-s>
+
+" Set initial window size
+set lines=50 columns=120
+

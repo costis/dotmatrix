@@ -102,8 +102,16 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-# PAGER
-PAGER=less
-export PAGER
+# Paths
+export PATH=$PATH:/opt/play-1.0.3/:/home/costis/bin/:/opt/apache-maven-2.2.1/bin/:/opt/spring-roo-1.0.2.RELEASE/bin/
+# export JAVA_HOME=/usr/lib/jvm/java-6-sun/
+# export JDK_HOME=/usr/lib/jvm/java-6-sun/
+export JAVA_HOME=/opt/jdk1.6.0_20/
+export JDK_HOME=/opt/jdk1.6.0_20/
+
+export PATH=".:/opt/Komodo-IDE-6/bin:$PATH"
+
+# enable antialising for Java Swing apps
+# export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=setting'
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
