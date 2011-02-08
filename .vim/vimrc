@@ -11,13 +11,16 @@ filetype plugin indent on
 colorscheme wombat 
 syntax on
 
-set hidden " you can change buffers without saving
+
+set nowrap "disable wrapping 
+
+set hidden "you can change buffers without saving
 set expandtab
 set tabstop=2
 set shiftwidth=2
 set bs=2
 set number "show numbers
-set showcmd " show partial command you are typing
+set showcmd "show partial command you are typing
 set smarttab
 set autoindent
 
