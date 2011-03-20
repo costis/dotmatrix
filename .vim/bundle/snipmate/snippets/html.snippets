@@ -163,6 +163,10 @@ snippet form
 	</form>
 snippet h1
 	<h1 id="${1:heading}">${2:$1}</h1>
+snippet h2
+	<h2 id="${1:heading}">${2:$1}</h2>
+snippet h3
+	<h3 id="${1:heading}">${2:$1}</h3>
 snippet input
 	<input type="${1:text/submit/hidden/button}" name="${2:some_name}" value="${3}"`Close()`>${4}
 snippet label
@@ -188,3 +192,7 @@ snippet table
 	</table>${4}
 snippet textarea
 	<textarea name="${1:Name}" rows="${2:8}" cols="${3:40}">${4}</textarea>${5}
+snippet t
+	<${1:div}${2}>
+		${3}
+	</$1>${4}
