@@ -8,12 +8,11 @@ call pathogen#helptags()
 
 set nocompatible
 filetype plugin indent on
-colorscheme wombat 
+set background=dark
+colorscheme solarized
 syntax on
 
-
 set nowrap "disable wrapping 
-
 set hidden "you can change buffers without saving
 set expandtab
 set tabstop=2
@@ -54,10 +53,16 @@ nmap <silent> ,w :BufOnly<CR>
 " Status Line
 set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
 
-" Add statusline support for syntactic plugin
+" statusline support for syntactic plugin
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+
+" For fugitive (Git)
+set statusline+=%{fugitive#statusline()}
+
+" Statusline always visible
+set laststatus=2
 
 " Toggle the NERDTree
 map <silent> <A-1> :NERDTreeToggle<CR> 
