@@ -12,7 +12,11 @@ set background=dark
 colorscheme solarized
 syntax on
 
+" enable matchit.vim for rubytext-block
+runtime macros/matchit.vim
+
 set nowrap "disable wrapping 
+
 set hidden "you can change buffers without saving
 set expandtab
 set tabstop=2
@@ -83,3 +87,8 @@ let g:syntastic_enable_signs=1
 " For vimdiff
 set diffopt=filler
 " set diffopt+=iwhite
+"
+
+" For ctrlp plugin to ignore files
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
+
