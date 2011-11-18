@@ -62,9 +62,6 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-" For fugitive (Git)
-set statusline+=%{fugitive#statusline()}
-
 " Statusline always visible
 set laststatus=2
 
