@@ -87,8 +87,12 @@ let g:syntastic_enable_signs=1
 " For vimdiff
 set diffopt=filler
 " set diffopt+=iwhite
-"
 
 " For ctrlp plugin to ignore files
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 
+" Diff changes for opened file
+if !exists(":DiffOrig")
+    command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
+          \ | wincmd p | diffthis
+endif
