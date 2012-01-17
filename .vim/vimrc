@@ -64,12 +64,14 @@ set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+set statusline+=%{fugitive#statusline()}
+
 
 " Statusline always visible
 set laststatus=2
 
 " Toggle the NERDTree
-map <silent> <A-1> :NERDTreeToggle<CR> 
+map <silent> <C-k><C-b> :NERDTreeToggle<CR> 
 " Close NERDTree when opening a file
 let g:NERDTreeQuitOnOpen = 1 
 
@@ -96,3 +98,5 @@ if !exists(":DiffOrig")
     command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
           \ | wincmd p | diffthis
 endif
+
+" Fugitive
