@@ -71,7 +71,7 @@ set statusline+=%{fugitive#statusline()}
 set laststatus=2
 
 " Toggle the NERDTree
-map <silent> <C-k><C-b> :NERDTreeToggle<CR> 
+map <silent> ,ex :NERDTreeToggle<CR> 
 " Close NERDTree when opening a file
 let g:NERDTreeQuitOnOpen = 1 
 
