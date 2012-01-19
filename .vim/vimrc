@@ -8,7 +8,11 @@ call pathogen#helptags()
 set nocompatible
 filetype plugin indent on
 set background=dark
-colorscheme solarized
+
+"set t_Co=256
+"let g:solarized_termcolors=256
+colorscheme vividchalk 
+
 syntax on
 
 " enable matchit.vim for rubytext-block
@@ -63,8 +67,6 @@ set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-set statusline+=%{fugitive#statusline()}
-
 
 " Statusline always visible
 set laststatus=2
