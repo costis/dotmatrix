@@ -119,3 +119,10 @@ export PATH=".:/opt/Komodo-IDE-6/bin:$PATH"
 
 # prompt for rvm info
 PS1="\$(~/.rvm/bin/rvm-prompt) $PS1"
+
+# Editor, Browser etc
+export EDITOR=vim
+export BROWSER=/usr/bin/google-chrome
+# Vim needs this to show pretty colors
+export TERM=xterm-256color
+
