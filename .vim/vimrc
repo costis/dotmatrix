@@ -58,7 +58,7 @@ nmap <silent> ,l :set list!<CR>
 nmap <silent> ,w :BufOnly<CR>
 
 " CtrlP in open buffer mode
-map <silent> ,b :CtrlPBuffer<CR>
+map <silent> ,t :CtrlPBuffer<CR>
 
 " Status Line
 set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
@@ -72,7 +72,7 @@ set statusline+=%*
 set laststatus=2
 
 " Toggle the NERDTree
-map <silent> ,ex :NERDTreeToggle<CR> 
+map <silent> ,e :NERDTreeToggle<CR> 
 " Close NERDTree when opening a file
 let g:NERDTreeQuitOnOpen = 1 
 
