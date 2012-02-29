@@ -130,3 +130,7 @@ export TERM=xterm-256color
 set -o vi
 bind -m vi-insert "C-l":clear-screen
 
+function cdp(){
+  eval "cd ~/projects/$1"
+}
+
