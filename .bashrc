@@ -118,11 +118,15 @@ export PATH=".:/opt/Komodo-IDE-6/bin:$PATH"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
 # prompt for rvm info
-PS1="\$(~/.rvm/bin/rvm-prompt) $PS1"
+# PS1="\$(~/.rvm/bin/rvm-prompt) $PS1"
 
 # Editor, Browser etc
 export EDITOR=vim
 export BROWSER=/usr/bin/google-chrome
 # Vim needs this to show pretty colors
 export TERM=xterm-256color
+
+# bash in vi mode
+set -o vi
+bind -m vi-insert "C-l":clear-screen
 
