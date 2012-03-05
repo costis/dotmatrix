@@ -41,7 +41,7 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 " Keymaps
 inoremap jj <ESC> " alternative ESCAPE
 nmap <C-n> :cn<CR> " find next occurance after vimgrep
-nmap <C-p> :cp<CR> " find previous occurance after vimgrep
+nmap <C-N> :cp<CR> " find previous occurance after vimgrep
 
 if has("gui_running")
   " If the current buffer has never been saved, it will have no name,
