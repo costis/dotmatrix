@@ -38,19 +38,19 @@ set backspace=indent,eol,start
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
+" set the leader key
+let mapleader = ","
+
 " Keymaps
 inoremap jj <ESC> " alternative ESCAPE
-nmap <C-n> :cn<CR> " find next occurance after vimgrep
-nmap <C-N> :cp<CR> " find previous occurance after vimgrep
+nmap <F3> :cn<CR> " find next occurance after vimgrep
+nmap <F4> :cp<CR> " find previous occurance after vimgrep
 
 if has("gui_running")
   " If the current buffer has never been saved, it will have no name,
   " call the file browser to save it, otherwise just save it.
   :map <silent> <C-S> :if expand("%") == ""<CR>:browse confirm w<CR>:else<CR>:confirm w<CR>:endif<CR>
 endif
-
-" set the leader key
-let mapleader = ","
 
 " Toggle invisible characters
 nmap <silent> ,l :set list!<CR> 
