@@ -4,6 +4,7 @@
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
+[[ $TERM != screen* ]] && exec tmux -2
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
@@ -82,6 +83,7 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias less='less -R'
+alias tmux='tmux -2'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -103,15 +105,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-# Paths
-export PATH=$PATH:/opt/play-1.0.3/:/home/costis/bin/:/opt/apache-maven-2.2.1/bin/:/opt/spring-roo-1.0.2.RELEASE/bin/
-# export JAVA_HOME=/usr/lib/jvm/java-6-sun/
-# export JDK_HOME=/usr/lib/jvm/java-6-sun/
-#export JAVA_HOME=/opt/jdk1.6.0_20/
-#export JDK_HOME=/opt/jdk1.6.0_20/
-
-export PATH=".:/opt/Komodo-IDE-6/bin:$PATH"
-
 # enable antialising for Java Swing apps
 # export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=setting'
 
@@ -124,17 +117,30 @@ export PATH=".:/opt/Komodo-IDE-6/bin:$PATH"
 # Editor, Browser etc
 export EDITOR=vim
 export BROWSER=/usr/bin/google-chrome
+
 # Vim needs this to show pretty colors
-export TERM=xterm-256color
+#export TERM=xterm-256color
 
 # bash in vi mode
 set -o vi
 bind -m vi-insert "C-l":clear-screen
 
-function cdp(){
-  eval "cd ~/projects/$1"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:/usr/local/lib/jdk1.6.0_32/bin
+export JAVA_HOME=/usr/local/lib/jdk1.6.0_32
+
+get_git_branch() {
+  local br=$(git branch 2> /dev/null | grep "*" | sed 's/* //g')
+  [ -n "$br" ] && echo " @$br"
 }
+export PS1='\u@\h:\w$(get_git_branch) \$ '
 
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+# for node.js runtime
+. ~/nvm/nvm.sh
