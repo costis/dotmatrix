@@ -64,6 +64,9 @@ map <silent> ,t :CtrlPBuffer<CR>
 " Preview Markdown files
 map <leader>P :Mm<CR>
 
+" Toggle the NERDTree
+map <silent> ,e :NERDTreeToggle<CR>
+
 " Status Line
 set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
 
@@ -75,8 +78,6 @@ set statusline+=%*
 " Statusline always visible
 set laststatus=2
 
-" Toggle the NERDTree
-map <silent> ,e :NERDTreeToggle<CR>
 " Close NERDTree when opening a file
 let g:NERDTreeQuitOnOpen = 1
 
@@ -111,4 +112,4 @@ set splitright
 set splitbelow
 
 " Remove trailing whitespacing before saving
-autocmd BufWritePre * :%s/\s\+$//e
+"autocmd BufWritePre * :%s/\s\+$//e
