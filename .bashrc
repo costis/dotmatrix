@@ -4,7 +4,7 @@
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
-[[ $TERM != screen* ]] && exec tmux -2
+#[[ $TERM != screen* ]] && exec tmux -2
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
@@ -76,6 +76,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
+    alias be='bundle exec'
 fi
 
 # some more ls aliases
@@ -140,7 +141,10 @@ export PS1='\u@\h:\w$(get_git_branch) \$ '
 
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:$HOME/.rvm/bin:/opt/RubyMine/bin # Add RVM to PATH for scripting
 
 # for node.js runtime
 . ~/nvm/nvm.sh
+
+# set shell to vi mode
+set -o vi
