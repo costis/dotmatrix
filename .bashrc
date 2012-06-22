@@ -138,7 +138,7 @@ export JAVA_HOME=/usr/local/lib/jdk1.6.0_32
 
 get_git_branch() {
   local br=$(git branch 2> /dev/null | grep "*" | sed 's/* //g')
-  [ -n "$br" ] && echo " @$br"
+  [ -n "$br" ] && echo " [@$br]"
 }
 export PS1='\u@\h:\w$(get_git_branch) \$ '
 
