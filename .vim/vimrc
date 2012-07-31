@@ -122,3 +122,15 @@ set winheight=999
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
+
+" Vimux should not open new panes
+let g:VimuxUseNearestPane = 1
+
+" Remap Turbux keybindings
+let g:no_turbux_mappings = 1
+map <leader>m <Plug>SendTestToTmux
+map <leader>M <Plug>SendFocusedTestToTmux
+
+" Turbux should use drb by default
+let g:turbux_command_cucumber = 'cucumber --drb'
+let g:turbux_command_rspec    = 'rspec --drb'
