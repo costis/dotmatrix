@@ -22,10 +22,11 @@
   ci = commit
   st = status
   br = branch
-  hist = log --pretty=format:\"%C(bold blue)%h%C(reset) %ad -%C(green)%d%Creset %s%d %C(bold yellow)[%an]%C(reset)\" --graph --date=short
+  lg = log --pretty=format:\"%C(bold blue)%h%C(reset) %ad -%C(green)%d%Creset %s%d %C(bold yellow)[%an]%C(reset)\" --graph --date=short
   type = cat-file -t
   dump = cat-file -p
-  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  df = diff
+  dh = diff HEAD~1
 
 [merge]
 	tool = vimdiff
