@@ -76,7 +76,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
-    alias be='bundle exec'
 fi
 
 # some more ls aliases
@@ -85,6 +84,7 @@ alias la='ls -A'
 alias l='ls -CF'
 alias less='less -R'
 alias tmux='tmux -2'
+alias be='bundle exec'
 
 # easy open
 function o { xdg-open "$@";}
@@ -125,24 +125,23 @@ export BROWSER=/usr/bin/google-chrome
 # Vim needs this to show pretty colors
 #export TERM=xterm-256color
 
-# bash in vi mode
-set -o vi
 bind -m vi-insert "C-l":clear-screen
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-PATH=$PATH:/usr/local/lib/jdk1.6.0_32/bin
-export JAVA_HOME=/usr/local/lib/jdk1.6.0_32
+PATH=$PATH:/usr/local/lib/jdk1.6.0_33/bin
+PATH=~/bin:$PATH
+
+export JAVA_HOME=/usr/local/lib/jdk1.6.0_33
 
 get_git_branch() {
   local br=$(git branch 2> /dev/null | grep "*" | sed 's/* //g')
-  [ -n "$br" ] && echo " [@$br]"
+  [ -n "$br" ] && echo "[@$br]"
 }
-export PS1='\u@\h:\w$(get_git_branch) \$ '
 
-[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+export PS1='\u@\h:\w\e[0;32m$(get_git_branch)\e[m\$ '
+
 
 PATH=$PATH:$HOME/.rvm/bin:/opt/RubyMine/bin # Add RVM to PATH for scripting
 
@@ -151,3 +150,11 @@ PATH=$PATH:$HOME/.rvm/bin:/opt/RubyMine/bin # Add RVM to PATH for scripting
 
 # set shell to vi mode
 set -o vi
+
+# Load env vars with credentials for web apps
+if [ -f ~/.dev_vars ]; then
+    . ~/.dev_vars
+fi
+
+# export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+# export LESS=' -R '
