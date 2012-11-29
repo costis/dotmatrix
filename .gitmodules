@@ -1,0 +1,60 @@
+[submodule ".vim/bundle/autoclose"]
+	path = .vim/bundle/autoclose
+	url = git://github.com/Townk/vim-autoclose.git
+[submodule ".vim/bundle/bufkill"]
+	path = .vim/bundle/bufkill
+	url = git://github.com/vim-scripts/bufkill.vim.git
+[submodule ".vim/bundle/vim-bufonly"]
+	path = .vim/bundle/vim-bufonly
+	url = git://github.com/duff/vim-bufonly.git
+[submodule ".vim/bundle/ctrlp"]
+	path = .vim/bundle/ctrlp
+	url = git://github.com/kien/ctrlp.vim.git
+[submodule ".vim/bundle/cucumber"]
+	path = .vim/bundle/cucumber
+	url = git://github.com/tpope/vim-cucumber.git
+[submodule ".vim/bundle/vim-fugitive"]
+	path = .vim/bundle/vim-fugitive
+	url = git://github.com/tpope/vim-fugitive.git
+[submodule ".vim/bundle/nerdtree"]
+	path = .vim/bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
+[submodule ".vim/bundle/vim-rails"]
+	path = .vim/bundle/vim-rails
+	url = git://github.com/tpope/vim-rails.git
+[submodule ".vim/bundle/vim-surround"]
+	path = .vim/bundle/vim-surround
+	url = git://github.com/tpope/vim-surround.git
+[submodule ".vim/bundle/syntastic"]
+	path = .vim/bundle/syntastic
+	url = git://github.com/scrooloose/syntastic.git
+[submodule ".vim/bundle/tabular"]
+	path = .vim/bundle/tabular
+	url = git://github.com/godlygeek/tabular.git
+[submodule ".vim/bundle/tcomment"]
+	path = .vim/bundle/tcomment
+	url = git://github.com/tomtom/tcomment_vim.git
+[submodule ".vim/bundle/turbux"]
+	path = .vim/bundle/turbux
+	url = git://github.com/jgdavey/vim-turbux.git
+[submodule ".vim/bundle/vim-colors-solarized"]
+	path = .vim/bundle/vim-colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule ".vim/bundle/vim-endwise"]
+	path = .vim/bundle/vim-endwise
+	url = git://github.com/tpope/vim-endwise.git
+[submodule ".vim/bundle/vim-markdown-preview"]
+	path = .vim/bundle/vim-markdown-preview
+	url = git://github.com/greyblake/vim-preview.git
+[submodule ".vim/bundle/vim-ruby"]
+	path = .vim/bundle/vim-ruby
+	url = git://github.com/vim-ruby/vim-ruby.git
+[submodule ".vim/bundle/vimux"]
+	path = .vim/bundle/vimux
+	url = git://github.com/benmills/vimux.git
+[submodule ".vim/bundle/vim-textobj-rubyblock"]
+	path = .vim/bundle/vim-textobj-rubyblock
+	url = git://github.com/nelstrom/vim-textobj-rubyblock.git
+[submodule ".vim/bundle/vim-textobj-user"]
+	path = .vim/bundle/vim-textobj-user
+	url = git://github.com/kana/vim-textobj-user.git
