@@ -137,18 +137,27 @@ export JAVA_HOME=/usr/local/lib/jdk1.6.0_33
 
 git_has_stash() {
   if [[ -n $(git stash list 2> /dev/null) ]]; then
-    echo "#"
+    echo "★"
   else
     echo ""
   fi
 }
 
-get_git_branch() {
-  local br=$(git branch 2> /dev/null | grep "*" | sed 's/* //g')
-  [ -n "$br" ] && echo "[@$br]$(git_has_stash)"
+git_dirty() {
+  st=$(git status 2>/dev/null | tail -n 1)
+  if [[ $st != "nothing to commit, working directory clean" ]]; then
+    echo " ✗"
+  else
+    echo " ✓"
+  fi
 }
 
-export PS1='\u@\h:\w\[\033[34m\]$(get_git_branch)\[\033[0m\]\$ '
+get_git_branch() {
+  local br=$(git branch 2> /dev/null | grep "*" | sed 's/* //g')
+  [ -n "$br" ] && echo "[@$br$(git_has_stash)$(git_dirty)]"
+}
+
+export PS1='\u@\h:\w\[\033[34m\]$(get_git_branch)\[\033[0m\]$ '
 
 PATH=$PATH:$HOME/.rvm/bin:/opt/RubyMine/bin # Add RVM to PATH for scripting
 
