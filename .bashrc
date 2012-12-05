@@ -145,10 +145,10 @@ git_has_stash() {
 
 get_git_branch() {
   local br=$(git branch 2> /dev/null | grep "*" | sed 's/* //g')
-  [ -n "$br" ] && echo " [@$br]$(git_has_stash)"
+  [ -n "$br" ] && echo "[@$br]$(git_has_stash)"
 }
 
-export PS1='\u@\h:\w\e[0;32m$(get_git_branch)\e[m\$ '
+export PS1='\u@\h:\w\[\033[34m\]$(get_git_branch)\[\033[0m\]\$ '
 
 PATH=$PATH:$HOME/.rvm/bin:/opt/RubyMine/bin # Add RVM to PATH for scripting
 
