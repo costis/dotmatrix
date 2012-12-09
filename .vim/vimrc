@@ -137,4 +137,4 @@ map <leader>M <Plug>SendFocusedTestToTmux
 
 " Turbux should use drb by default
 let g:turbux_command_cucumber = 'cucumber --drb'
-let g:turbux_command_rspec    = 'rspec --drb -f d'
+let g:turbux_command_rspec    = 'rspec -f d'
