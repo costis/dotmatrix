@@ -69,6 +69,9 @@ map <leader>P :Mm<CR>
 " Toggle the NERDTree
 map <silent> ,e :NERDTreeToggle<CR>
 
+" Save buffer
+nnoremap <silent> ,s :update<CR>
+
 " Status Line
 set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
 
