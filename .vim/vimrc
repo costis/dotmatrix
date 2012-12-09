@@ -44,6 +44,7 @@ let mapleader = ","
 
 " Keymaps
 nnoremap <c-c> <ESC> " alternative ESCAPE
+inoremap jj <ESC>
 nmap <F3> :cn<CR> " find next occurance after vimgrep
 nmap <F4> :cp<CR> " find previous occurance after vimgrep
 
