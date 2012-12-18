@@ -44,6 +44,7 @@ let mapleader = ","
 
 " Keymaps
 nnoremap <c-c> <ESC> " alternative ESCAPE
+inoremap jj <ESC>
 nmap <F3> :cn<CR> " find next occurance after vimgrep
 nmap <F4> :cp<CR> " find previous occurance after vimgrep
 
@@ -67,6 +68,9 @@ map <leader>P :Mm<CR>
 
 " Toggle the NERDTree
 map <silent> ,e :NERDTreeToggle<CR>
+
+" Save buffer
+nnoremap <silent> ,s :update<CR>
 
 " Status Line
 set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
@@ -133,4 +137,4 @@ map <leader>M <Plug>SendFocusedTestToTmux
 
 " Turbux should use drb by default
 let g:turbux_command_cucumber = 'cucumber --drb'
-let g:turbux_command_rspec    = 'rspec --drb -f d'
+let g:turbux_command_rspec    = 'rspec -f d'
