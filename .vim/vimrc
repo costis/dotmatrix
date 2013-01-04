@@ -143,3 +143,7 @@ let g:turbux_command_rspec    = 'rspec -f d'
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style = "inc"
+
+" Generate tags for Ruby projects with Bundler support.
+" Generates for all  Gemfile gems.
+map rt :execute "!bundle list --paths=true \| xargs ctags --extra=+f --exclude=.git --exclude=log -R *"<CR>
