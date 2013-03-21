@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+for file in `find $HOME/.dotmatrix/ -maxdepth 1 -name ".*" -type f`
+do
+  filename=${file##*/}
+
+  if [ "$filename" != ".gitmodules" ]
+  then
+    if  [ -e $HOME/$filename ]
+    then
+      echo $filename exists
+    else
+      `ln -s $file $HOME/$filename`
+    fi
+  fi
+done
