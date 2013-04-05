@@ -174,3 +174,43 @@ fi
 
 # export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 # export LESS=' -R '
+
+# Easily switch to project directories
+function cpd() {
+  if (( $# > 0 )); then
+    folders=($(find ~/projects -type d -name *$1* -maxdepth 1))
+    if [ ${#folders[@]} -eq 1  ]; then
+      pushd ${folders[0]} 1> /dev/null
+    elif [ ${#folders[@]} -eq 0 ]; then
+      folders=($(find ~/projects -type d -maxdepth 1))
+    fi
+  else
+    folders=($(find ~/projects -type d -maxdepth 1))
+  fi
+
+  while [ ${#folders[@]} -gt 1 ]; do
+    # display a selection menu
+    i=0
+    for f in ${folders[@]}; do
+      echo " " $i - ${f##*/}
+      ((i++))
+    done
+    read -p "Select project: " user_input
+
+    # selection by number?
+    if [[ $user_input =~ ^[0-9]+$ ]]; then
+      d=${folders[$user_input]}
+      pushd ~/projects/${d##*/} 1> /dev/null
+      break
+    # user has entered a string. Search again.
+    else
+      folders=($(find ~/projects -name *$user_input* -type d -maxdepth 1))
+      if [[ ${#folders[@]} -eq 1 ]]; then
+        pushd ${folders[0]} 1> /dev/null
+        break
+      fi
+    fi
+  done
+
+  return 0
+}
