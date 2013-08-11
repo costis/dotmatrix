@@ -152,3 +152,6 @@ map rt :execute "!bundle list --paths=true \| xargs ctags --extra=+f --exclude=.
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 hi NonText ctermfg=7 guifg=gray
 hi SpecialKey ctermfg=7 guifg=gray
+
+" Don't display buffer line inside command bar, 'airline' will show it.
+let g:bufferline_echo=0
