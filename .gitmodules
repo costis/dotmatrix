@@ -86,3 +86,6 @@
 [submodule ".vim/bundle/vim-bumdler"]
 	path = .vim/bundle/vim-bumdler
 	url = git@github.com:tpope/vim-bundler.git
+[submodule ".vim/bundle/vim-ag"]
+	path = .vim/bundle/vim-ag
+	url = git@github.com:rking/ag.vim.git
