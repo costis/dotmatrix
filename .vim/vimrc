@@ -53,6 +53,12 @@ inoremap jj <ESC>
 nmap <F3> :cn<CR> " find next occurance after vimgrep
 nmap <F4> :cp<CR> " find previous occurance after vimgrep
 
+ "change default cursor keys to work on visual not actual lines
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+
 if has("gui_running")
   " If the current buffer has never been saved, it will have no name,
   " call the file browser to save it, otherwise just save it.
