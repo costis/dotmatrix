@@ -86,3 +86,6 @@
 [submodule ".vim/bundle/vim-ag"]
 	path = .vim/bundle/vim-ag
 	url = git@github.com:rking/ag.vim.git
+[submodule ".vim/bundle/tagbar"]
+	path = .vim/bundle/tagbar
+	url = git@github.com:majutsushi/tagbar.git

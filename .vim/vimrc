@@ -166,3 +166,8 @@ hi SpecialKey ctermfg=7 guifg=gray
 
 " Don't display buffer line inside command bar, 'airline' will show it.
 let g:bufferline_echo=0
+let g:airline_enable_tagbar=1
+let g:airline_enable_syntastic=1
+
+" TagBar
+nnoremap <silent> <F8> :TagbarToggle<CR>
