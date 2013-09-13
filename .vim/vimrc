@@ -172,3 +172,21 @@ let g:airline_enable_syntastic=1
 
 " TagBar
 nnoremap <silent> <F8> :TagbarToggle<CR>
+
+" Don't allow gitgutter to update in realtime.
+let g:gitgutter_realtime = 0
+
+" Deleting buffers in CtrlP
+let g:ctrlp_buffer_func = { 'enter': 'MyCtrlPMappings' }
+
+func! MyCtrlPMappings()
+    nnoremap <buffer> <silent> <c-@> :call <sid>DeleteBuffer()<cr>
+endfunc
+
+func! s:DeleteBuffer()
+    let line = getline('.')
+    let bufid = line =~ '\[\d\+\*No Name\]$' ? str2nr(matchstr(line, '\d\+'))
+        \ : fnamemodify(line[2:], ':p')
+    exec "bd" bufid
+    exec "norm \<F5>"
+endfunc
