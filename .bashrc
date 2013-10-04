@@ -214,3 +214,15 @@ function cpd() {
 
   return 0
 }
+
+# Bash Vi mode
+set -o vi
+# ^l clear screen
+bind -m vi-insert "\C-l":clear-screen
+
+# ^p check for partial match in history
+# bind -m vi-insert "\C-p":dynamic-complete-history
+bind -m vi-insert "\C-p":previous-history
+# ^n cycle through the list of partial matches
+# bind -m vi-insert "\C-n":menu-complete
+bind -m vi-insert "\C-n":next-history
