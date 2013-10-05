@@ -34,3 +34,6 @@
 
 [merge]
 	tool = vimdiff
+[user]
+	email = costisp@gmail.com
+	name = Costis Panagiotopoulos
