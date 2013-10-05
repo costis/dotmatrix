@@ -23,6 +23,7 @@
   ci = commit
   st = status
   s = status
+  d = diff
   br = branch
   lg = log --pretty=format:\"%C(bold blue)%h%C(reset) %ad -%C(green)%d%Creset %s%d %C(bold yellow)[%an]%C(reset)\" --graph --date=short
   l  = log --pretty=format:\"%C(bold blue)%h%C(reset) %ad -%C(green)%d%Creset %s%d %C(bold yellow)[%an]%C(reset)\" --graph --date=short --all

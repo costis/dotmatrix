@@ -112,12 +112,6 @@ fi
 # enable antialising for Java Swing apps
 # export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=setting'
 
-# load rvm script
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
-
-# prompt for rvm info
-# PS1="\$(~/.rvm/bin/rvm-prompt) $PS1"
-
 # Editor, Browser etc
 export EDITOR=vim
 export BROWSER=/usr/bin/google-chrome
@@ -129,7 +123,6 @@ bind -m vi-insert "C-l":clear-screen
 
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 PATH=$PATH:/usr/local/lib/jdk1.6.0_33/bin
 PATH=~/bin:$PATH
 
@@ -159,13 +152,8 @@ get_git_branch() {
 
 export PS1='\u@\h:\w\[\033[34m\]$(get_git_branch)\[\033[0m\]$ '
 
-PATH=$PATH:$HOME/.rvm/bin:/opt/RubyMine/bin # Add RVM to PATH for scripting
-
 # for node.js runtime
 . ~/nvm/nvm.sh
-
-# set shell to vi mode
-set -o vi
 
 # Load env vars with credentials for web apps
 if [ -f ~/.dev_vars ]; then
@@ -221,8 +209,19 @@ set -o vi
 bind -m vi-insert "\C-l":clear-screen
 
 # ^p check for partial match in history
-# bind -m vi-insert "\C-p":dynamic-complete-history
 bind -m vi-insert "\C-p":previous-history
+
 # ^n cycle through the list of partial matches
-# bind -m vi-insert "\C-n":menu-complete
 bind -m vi-insert "\C-n":next-history
+
+# bind -m vi-insert "\C-p":dynamic-complete-history
+# bind -m vi-insert "\C-n":menu-complete
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# Rbenv setup
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
