@@ -85,6 +85,7 @@ alias l='ls -CF'
 alias less='less -R'
 alias tmux='tmux -2'
 alias be='bundle exec'
+alias g='git'
 
 # easy open
 function o { xdg-open "$@";}
@@ -150,7 +151,7 @@ get_git_branch() {
   [ -n "$br" ] && echo "[@$br$(git_has_stash)$(git_dirty)]"
 }
 
-export PS1='\u@\h:\w\[\033[34m\]$(get_git_branch)\[\033[0m\]$ '
+export PS1='\u@\h:\w\[\033[34m\]$(get_git_branch)\[\033[0m\]\[\033[36m\][$(~/.rvm/bin/rvm-prompt v g)\[\033[0m\]]$ '
 
 # for node.js runtime
 . ~/nvm/nvm.sh
