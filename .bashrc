@@ -153,9 +153,6 @@ get_git_branch() {
 
 export PS1='\u@\h:\w\[\033[34m\]$(get_git_branch)\[\033[0m\]\[\033[36m\][$(~/.rvm/bin/rvm-prompt v g)\[\033[0m\]]$ '
 
-# for node.js runtime
-. ~/nvm/nvm.sh
-
 # Load env vars with credentials for web apps
 if [ -f ~/.dev_vars ]; then
     . ~/.dev_vars
@@ -218,11 +215,7 @@ bind -m vi-insert "\C-n":next-history
 # bind -m vi-insert "\C-p":dynamic-complete-history
 # bind -m vi-insert "\C-n":menu-complete
 
-# set PATH so it includes user's private bin if it exists
+# set PATH to include user's private bin, if it exists
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
-
-# Rbenv setup
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
