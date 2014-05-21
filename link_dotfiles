@@ -1,15 +1,35 @@
 #!/usr/bin/env bash
-for file in `find $HOME/.dotmatrix/ -maxdepth 1 -name ".*" -type f`
+
+_SOURCE_DIR="$HOME/.dotmatrix"
+#_TARGET_DIR="$HOME/test_dotmatrix"
+_TARGET_DIR="$HOME"
+
+cd $_TARGET_DIR
+
+for file in `find $_SOURCE_DIR -maxdepth 1 -name ".*" -type f`
 do
   filename=${file##*/}
 
   if [ "$filename" != ".gitmodules" ]
   then
-    if  [ -e $HOME/$filename ]
+    if  [ -e $_TARGET_DIR/$filename ]
     then
-      echo $filename exists
+      echo "$filename exists, skipping"
     else
-      `ln -s $file $HOME/$filename`
+      echo "running 'ln -s $file $_TARGET_DIR/$filename'"
+      `ln -s $file $_TARGET_DIR/$filename`
     fi
   fi
 done
+
+# link vimdir
+if [ ! -d $_TARGET_DIR/.vim ]; then
+  echo 'Linking .vim dir'
+  `ln -s $_SOURCE_DIR/.vim $_TARGET_DIR/.vim`
+fi
+
+#checkout Vundle plugin for vim
+if [ ! -e $_TARGET_DIR/.vim/bundle/vundle ]; then
+  echo 'Cloning vundle vim plugin'
+  git clone https://github.com/gmarik/vundle.git $_TARGET_DIR/.vim/bundle/vundle
+fi
