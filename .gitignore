@@ -1,6 +1,6 @@
-.vim/bundle/*/doc/tags
 .vim/.netrwhist
 *.pyc
 ./**/*.DS_Store
 .DS_Store
 
+.vim/bundle/
