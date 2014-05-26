@@ -31,6 +31,7 @@ Plugin 'vim-ruby/vim-ruby.git'
 Plugin 'tpope/vim-surround.git'
 Plugin 'nelstrom/vim-textobj-rubyblock.git'
 Plugin 'kana/vim-textobj-user.git'
+Plugin 'd11wtq/ctrlp_bdelete.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -202,17 +203,5 @@ nnoremap <silent> <F8> :TagbarToggle<CR>
 " Don't allow gitgutter to update in realtime.
 let g:gitgutter_realtime = 0
 
-" Deleting buffers in CtrlP
-let g:ctrlp_buffer_func = { 'enter': 'MyCtrlPMappings' }
-
-func! MyCtrlPMappings()
-    nnoremap <buffer> <silent> <c-@> :call <sid>DeleteBuffer()<cr>
-endfunc
-
-func! s:DeleteBuffer()
-    let line = getline('.')
-    let bufid = line =~ '\[\d\+\*No Name\]$' ? str2nr(matchstr(line, '\d\+'))
-        \ : fnamemodify(line[2:], ':p')
-    exec "bd" bufid
-    exec "norm \<F5>"
-endfunc
+" Deleting buffers in CtrlP, with a plugin
+call ctrlp_bdelete#init()
