@@ -86,6 +86,7 @@ alias less='less -R'
 alias tmux='tmux -2'
 alias be='bundle exec'
 alias g='git'
+alias dirs='dirs -v'
 
 # easy open
 function o { xdg-open "$@";}
