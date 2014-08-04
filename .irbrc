@@ -16,3 +16,7 @@ begin
 rescue LoadError => err
   warn "Couldn't load awesome_print: #{err}"
 end
+
+def hist
+  Readline::HISTORY.to_a
+end
