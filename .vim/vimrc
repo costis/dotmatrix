@@ -88,6 +88,7 @@ map <leader>x <Plug>SendTestToTmux
 map <leader>X <Plug>SendFocusedTestToTmux
 
 " Turbux should use drb by default
+let g:turbux_command_prefix = 'bundle exec'
 let g:turbux_command_cucumber  = 'cucumber --drb'
 let g:turbux_command_rspec     = 'rspec -f d'
 let g:turbux_command_test_unit = 'ruby -Itest'
@@ -201,6 +202,7 @@ let g:airline_enable_tagbar=1
 let g:airline_enable_syntastic=1
 
 " TagBar
+let g:tagbar_autofocus = 1
 nnoremap <silent> <F8> :TagbarToggle<CR>
 
 " Don't allow gitgutter to update in realtime.
