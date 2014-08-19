@@ -32,8 +32,10 @@ Plugin 'tpope/vim-surround.git'
 Plugin 'nelstrom/vim-textobj-rubyblock.git'
 Plugin 'kana/vim-textobj-user.git'
 Plugin 'd11wtq/ctrlp_bdelete.vim'
-
+Plugin 'benmills/vimux'
+Plugin 'jgdavey/vim-turbux'
 call vundle#end()
+
 filetype plugin indent on
 
 set background=dark
@@ -79,6 +81,16 @@ nnoremap <c-c> <ESC> " alternative ESCAPE
 inoremap jj <ESC>
 nmap <F3> :cn<CR> " find next occurance after vimgrep
 nmap <F4> :cp<CR> " find previous occurance after vimgrep
+
+" remap Turbux keybindings
+let g:no_turbux_mappings = 1
+map <leader>x <Plug>SendTestToTmux
+map <leader>X <Plug>SendFocusedTestToTmux
+
+" Turbux should use drb by default
+let g:turbux_command_cucumber  = 'cucumber --drb'
+let g:turbux_command_rspec     = 'rspec -f d'
+let g:turbux_command_test_unit = 'ruby -Itest'
 
  "change default cursor keys to work on visual not actual lines
 nnoremap j gj
@@ -168,15 +180,6 @@ nnoremap <leader><leader> <c-^>
 
 " Vimux should not open new panes
 let g:VimuxUseNearestPane = 1
-
-" Remap Turbux keybindings
-let g:no_turbux_mappings = 1
-map <leader>m <Plug>SendTestToTmux
-map <leader>M <Plug>SendFocusedTestToTmux
-
-" Turbux should use drb by default
-let g:turbux_command_cucumber = 'cucumber --drb'
-let g:turbux_command_rspec    = 'rspec -f d'
 
 " HTML Indentation config
 let g:html_indent_inctags = "html,body,head,tbody"
