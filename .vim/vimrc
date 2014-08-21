@@ -7,8 +7,8 @@ filetype plugin indent off
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/vundle
-call vundle#begin()
 
+call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Townk/vim-autoclose'
@@ -29,8 +29,8 @@ Plugin 'tpope/vim-markdown.git'
 Plugin 'tpope/vim-rails.git'
 Plugin 'vim-ruby/vim-ruby.git'
 Plugin 'tpope/vim-surround.git'
-Plugin 'nelstrom/vim-textobj-rubyblock.git'
 Plugin 'kana/vim-textobj-user.git'
+Plugin 'nelstrom/vim-textobj-rubyblock.git'
 Plugin 'd11wtq/ctrlp_bdelete.vim'
 Plugin 'benmills/vimux'
 Plugin 'jgdavey/vim-turbux'
@@ -41,12 +41,13 @@ filetype plugin indent on
 set background=dark
 set colorcolumn=100
 
-"set t_Co=256
+" set t_Co=256
 " let g:solarized_termcolors=256
 " colorscheme solarized
 
 colorscheme lucius
 LuciusBlack
+
 
 syntax on
 " set foldmethod=syntax
@@ -113,6 +114,7 @@ nmap <silent> ,w :BufOnly<CR>
 
 " CtrlP in open buffer mode
 map <silent> ,t :CtrlPBuffer<CR>
+map <silent> ,m :CtrlPMRU<CR>
 
 " Preview Markdown files
 map <leader>P :Mm<CR>
