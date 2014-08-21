@@ -212,3 +212,6 @@ let g:gitgutter_realtime = 0
 
 " Deleting buffers in CtrlP, with a plugin
 call ctrlp_bdelete#init()
+
+nnoremap <leader>1 :NERDTreeToggle<CR>
+nnoremap <leader>! :NERDTreeFind<CR>
