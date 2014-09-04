@@ -88,6 +88,10 @@ alias be='bundle exec'
 alias g='git'
 alias dirs='dirs -v'
 
+# tmux aliases
+alias tml='tmux ls'
+alias tma='tmux attach -t $1'
+
 # easy open
 function o { xdg-open "$@";}
 
