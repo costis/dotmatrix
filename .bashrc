@@ -170,7 +170,7 @@ fi
 # Easily switch to project directories
 function cpd() {
   if (( $# > 0 )); then
-    folders=($(find ~/projects -type d -name *$1* -maxdepth 1))
+    folders=($(find ~/projects -maxdepth 1 -type d -iname *$1* ))
     if [ ${#folders[@]} -eq 1  ]; then
       pushd ${folders[0]} 1> /dev/null
     elif [ ${#folders[@]} -eq 0 ]; then
