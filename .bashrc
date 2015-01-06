@@ -226,10 +226,11 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-source ~/.profile
-
 # rebind re-attached tmux window to ssh-agent
 function tmux-rebind() {
   eval $(tmux show-environment | grep SSH_AUTH | sed -e '/^-/d')
 }
 
+if [ -f ~/.bashrc.local ]; then
+  . ~/.bashrc.local
+fi
