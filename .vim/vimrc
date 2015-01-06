@@ -34,6 +34,8 @@ Plugin 'nelstrom/vim-textobj-rubyblock.git'
 Plugin 'd11wtq/ctrlp_bdelete.vim'
 Plugin 'benmills/vimux'
 Plugin 'jgdavey/vim-turbux'
+Plugin 'justinmk/vim-gtfo'
+Plugin 'epeli/slimux'
 call vundle#end()
 
 filetype plugin indent on
@@ -122,8 +124,9 @@ map <leader>P :Mm<CR>
 " Toggle the NERDTree
 map <silent> ,e :NERDTreeToggle<CR>
 
-" Save buffer
-nnoremap <silent> ,s :update<CR>
+" Send to REPL
+map <Leader>s :SlimuxREPLSendLine<CR>
+vmap <Leader>s :SlimuxREPLSendSelection<CR>
 
 " Status Line
 set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
