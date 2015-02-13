@@ -87,6 +87,7 @@ alias tmux='tmux -2'
 alias be='bundle exec'
 alias g='git'
 alias dirs='dirs -v'
+alias npm-exec='PATH=$(npm bin):$PATH'
 
 # tmux aliases
 alias tml='tmux ls'
@@ -224,6 +225,10 @@ bind -m vi-insert "\C-n":next-history
 # set PATH to include user's private bin, if it exists
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
+fi
+
+if [ -d "$HOME/.npm" ] ; then
+    PATH="$HOME/.npm/bin:$PATH"
 fi
 
 # rebind re-attached tmux window to ssh-agent

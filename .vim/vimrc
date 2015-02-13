@@ -36,6 +36,10 @@ Plugin 'benmills/vimux'
 Plugin 'jgdavey/vim-turbux'
 Plugin 'justinmk/vim-gtfo'
 Plugin 'epeli/slimux'
+Plugin 'pangloss/vim-javascript'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'marijnh/tern_for_vim'
 call vundle#end()
 
 filetype plugin indent on
@@ -148,6 +152,14 @@ let g:NERDTreeWinSize = 40
 " Enable syntastic syntax checking
 let g:syntastic_enable_signs=1
 
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" don't forget to install with 'npm install jsxhint -g'
+let g:syntastic_javscript_checkers = ['jsxhint']
+
 " For vimdiff
 set diffopt=filler
 " set diffopt+=iwhite
@@ -218,3 +230,8 @@ call ctrlp_bdelete#init()
 
 nnoremap <leader>1 :NERDTreeToggle<CR>
 nnoremap <leader>! :NERDTreeFind<CR>
+
+" position cursor between braces
+imap <C-i> <CR><Esc>O
+
+let g:indent_guides_guide_size = 1
