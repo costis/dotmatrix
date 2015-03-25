@@ -239,3 +239,8 @@ function tmux-rebind() {
 if [ -f ~/.bashrc.local ]; then
   . ~/.bashrc.local
 fi
+
+. ~/.profile
+
+
+export PATH=$PATH:/usr/local/go/bin
