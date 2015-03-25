@@ -38,9 +38,8 @@ Plugin 'justinmk/vim-gtfo'
 Plugin 'epeli/slimux'
 Plugin 'pangloss/vim-javascript'
 Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'marijnh/tern_for_vim'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'vim-scripts/dbext.vim'
 call vundle#end()
 
 filetype plugin indent on
