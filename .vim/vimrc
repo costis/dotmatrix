@@ -52,7 +52,7 @@ set colorcolumn=100
 " colorscheme solarized
 
 colorscheme lucius
-LuciusBlack
+" LuciusBlack
 
 
 syntax on
@@ -235,3 +235,8 @@ imap <C-i> <CR><Esc>O
 
 let g:indent_guides_guide_size = 1
 let g:ycm_auto_trigger = 0
+
+nmap K :Ag "\b<C-R><C-W>\b"<CR>
+
+" Syntastic
+let g:syntastic_eruby_ruby_quiet_messages = {'regex': 'useless use of a variable in void context'}
