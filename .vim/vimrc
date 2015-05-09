@@ -245,3 +245,8 @@ nnoremap <Leader>wo :only<CR>
 
 " Ruby options
 let g:ruby_indent_access_modifier_style = 'indent'
+
+" Project specific settings
+if filereadable('.vimrc.local')
+  source .vimrc.local
+endif
