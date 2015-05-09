@@ -38,3 +38,5 @@
 [user]
 	email = costisp@gmail.com
 	name = Costis Panagiotopoulos
+[push]
+	default = simple
