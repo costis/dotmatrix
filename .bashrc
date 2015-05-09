@@ -117,24 +117,13 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-# enable antialising for Java Swing apps
-# export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=setting'
-
 # Editor, Browser etc
 export EDITOR=vim
 export BROWSER=/usr/bin/google-chrome
 
-# Vim needs this to show pretty colors
-#export TERM=xterm-256color
-
 bind -m vi-insert "C-l":clear-screen
 
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
-
-PATH=$PATH:/usr/local/lib/jdk1.6.0_33/bin
-PATH=~/bin:$PATH
-
-export JAVA_HOME=/usr/local/lib/jdk1.6.0_33
 
 git_has_stash() {
   if [[ -n $(git stash list 2> /dev/null) ]]; then
@@ -239,8 +228,3 @@ function tmux-rebind() {
 if [ -f ~/.bashrc.local ]; then
   . ~/.bashrc.local
 fi
-
-. ~/.profile
-
-
-export PATH=$PATH:/usr/local/go/bin

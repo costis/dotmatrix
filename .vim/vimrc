@@ -221,9 +221,6 @@ nnoremap <silent> <F8> :TagbarToggle<CR>
 " Don't allow gitgutter to update in realtime.
 let g:gitgutter_realtime = 0
 
-
-
-
 " Deleting buffers in CtrlP, with a plugin
 call ctrlp_bdelete#init()
 
