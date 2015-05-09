@@ -57,5 +57,5 @@ fi
 # Checkout Vundle plugin for vim
 if [ ! -e $_TARGET_DIR/.vim/bundle/vundle ]; then
   echo 'Cloning vundle vim plugin'
-  git clone https://github.com/gmarik/vundle.git $_TARGET_DIR/.vim/bundle/vundle
+  git clone https://github.com/gmarik/vundle.git $_TARGET_DIR/.vim/bundle/Vundle.vim
 fi
