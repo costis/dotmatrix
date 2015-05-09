@@ -55,7 +55,6 @@ set colorcolumn=100
 colorscheme lucius
 " LuciusBlack
 
-
 syntax on
 " set foldmethod=syntax
 
@@ -114,20 +113,17 @@ if has("gui_running")
 endif
 
 " Toggle invisible characters
-nmap <silent> ,l :set list!<CR>
-
-" Close all buffers except current one (via BufOnly.vim)
-nmap <silent> ,w :BufOnly<CR>
+nmap <silent> <Leader>l :set list!<CR>
 
 " CtrlP in open buffer mode
-map <silent> ,t :CtrlPBuffer<CR>
-map <silent> ,m :CtrlPMRU<CR>
+map <silent> <Leader>t :CtrlPBuffer<CR>
+map <silent> <Leader>m :CtrlPMRU<CR>
 
 " Preview Markdown files
 map <leader>P :Mm<CR>
 
 " Toggle the NERDTree
-map <silent> ,e :NERDTreeToggle<CR>
+map <silent> <Leader>e :NERDTreeToggle<CR>
 
 " Send to REPL
 map <Leader>s :SlimuxREPLSendLine<CR>
@@ -225,6 +221,9 @@ nnoremap <silent> <F8> :TagbarToggle<CR>
 " Don't allow gitgutter to update in realtime.
 let g:gitgutter_realtime = 0
 
+
+
+
 " Deleting buffers in CtrlP, with a plugin
 call ctrlp_bdelete#init()
 
@@ -241,3 +240,8 @@ nmap K :Ag "\b<C-R><C-W>\b"<CR>
 
 " Syntastic
 let g:syntastic_eruby_ruby_quiet_messages = {'regex': 'useless use of a variable in void context'}
+
+nnoremap <Leader>wq :close<CR>
+nnoremap <Leader>ws :split<CR>
+nnoremap <Leader>wvs :vert<CR>
+nnoremap <Leader>wo :only<CR>
