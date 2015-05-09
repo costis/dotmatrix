@@ -147,7 +147,6 @@ let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeWinSize = 40
 
 " Enable syntastic syntax checking
-let g:airline#extensions#syntastic#enabled = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -211,8 +210,6 @@ hi SpecialKey ctermfg=7 guifg=gray
 
 " Don't display buffer line inside command bar, 'airline' will show it.
 let g:bufferline_echo=0
-let g:airline_enable_tagbar=1
-let g:airline_enable_syntastic=1
 
 " TagBar
 let g:tagbar_autofocus = 1
