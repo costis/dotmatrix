@@ -1,34 +1,60 @@
 #!/usr/bin/env bash
 
 _SOURCE_DIR="$HOME/.dotmatrix"
-#_TARGET_DIR="$HOME/test_dotmatrix"
 _TARGET_DIR="$HOME"
+_COMMON_FILES=`find $_SOURCE_DIR -maxdepth 1 -name ".*" -type f`
+_LINUX_ONLY=`find "$_SOURCE_DIR/linux_only" -maxdepth 1 -name ".*" -type f`
+_OSX_ONLY=`find "$_SOURCE_DIR/osx_only" -maxdepth 1 -name ".*" -type f`
 
 cd $_TARGET_DIR
 
-for file in `find $_SOURCE_DIR -maxdepth 1 -name ".*" -type f`
-do
+_link_to_target() {
+  if  [[ -e $_TARGET_DIR/$1 ]]
+  then
+    echo "$filename exists, skipping"
+  else
+    echo "Linking 'ln -s $file $_TARGET_DIR/$1'"
+    `ln -s $file $_TARGET_DIR/$1`
+  fi
+}
+
+# Process files common for both Linux & OSX
+for file in $_COMMON_FILES; do
   filename=${file##*/}
 
-  if [ "$filename" != ".gitmodules" ]
-  then
-    if  [ -e $_TARGET_DIR/$filename ]
-    then
-      echo "$filename exists, skipping"
-    else
-      echo "running 'ln -s $file $_TARGET_DIR/$filename'"
-      `ln -s $file $_TARGET_DIR/$filename`
-    fi
+  # ignore .gitmodules
+  if [[ "$filename" == ".gitmodules" ]]; then
+    continue
   fi
+
+  _link_to_target $filename
 done
 
-# link vimdir
+# Process Linux specifics
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+  echo "Linux OSX specific files"
+  for file in $_LINUX_ONLY; do
+    filename=${file##*/}
+    _link_to_target $filename
+  done
+fi
+
+# Process OSX specifics
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  for file in $_OSX_ONLY; do
+    filename=${file##*/}
+    _link_to_target $filename
+  done
+fi
+
+
+# Link vimdir
 if [ ! -d $_TARGET_DIR/.vim ]; then
   echo 'Linking .vim dir'
   `ln -s $_SOURCE_DIR/.vim $_TARGET_DIR/.vim`
 fi
 
-#checkout Vundle plugin for vim
+# Checkout Vundle plugin for vim
 if [ ! -e $_TARGET_DIR/.vim/bundle/vundle ]; then
   echo 'Cloning vundle vim plugin'
   git clone https://github.com/gmarik/vundle.git $_TARGET_DIR/.vim/bundle/vundle

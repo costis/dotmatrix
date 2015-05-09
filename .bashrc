@@ -225,9 +225,10 @@ function tmux-rebind() {
   eval $(tmux show-environment | grep SSH_AUTH | sed -e '/^-/d')
 }
 
-if [ -f ~/.bashrc.local ]; then
-  . ~/.bashrc.local
-fi
-
 # Ruby RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+# Platform specific settings. It is linked from ~/.dotfiles/osx_only or ~/.dotfiles/linux_only
+if [[ -f $HOME/.bash.local ]] ; then
+  . $HOME/.bash.local
+fi
