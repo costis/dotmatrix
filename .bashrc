@@ -147,7 +147,15 @@ get_git_branch() {
   [ -n "$br" ] && echo "[@$br$(git_has_stash)$(git_dirty)]"
 }
 
-export PS1='\u@\h:\w\[\033[34m\]$(get_git_branch)\[\033[0m\]\[\033[36m\][$(~/.rvm/bin/rvm-prompt v g)\[\033[0m\]]$ '
+_get_rvm_prompt(){
+  if hash rvm-prompt 2> /dev/null; then
+    echo "[$(rvm-prompt v g)]"
+  else
+    echo ""
+  fi
+}
+
+export PS1='\u@\h:\w\[\033[34m\]$(get_git_branch)\[\033[0m\]\[\033[36m\]$(_get_rvm_prompt)\[\033[0m\]$ '
 
 # Load env vars with credentials for web apps
 if [ -f ~/.dev_vars ]; then
