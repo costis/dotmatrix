@@ -32,7 +32,7 @@ done
 
 # Process Linux specifics
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-  echo "Linux OSX specific files"
+  echo "Linux specific files"
   for file in $_LINUX_ONLY; do
     filename=${file##*/}
     _link_to_target $filename
