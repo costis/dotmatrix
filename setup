@@ -2,60 +2,79 @@
 
 _SOURCE_DIR="$HOME/.dotmatrix"
 _TARGET_DIR="$HOME"
-_COMMON_FILES=`find $_SOURCE_DIR -maxdepth 1 -name ".*" -type f`
-_LINUX_ONLY=`find "$_SOURCE_DIR/linux_only" -maxdepth 1 -name ".*" -type f`
-_OSX_ONLY=`find "$_SOURCE_DIR/osx_only" -maxdepth 1 -name ".*" -type f`
+_COMMON_FILES=`find $_SOURCE_DIR -maxdepth 1 -name "*.symlink"`
+_LINUX_ONLY=`find "$_SOURCE_DIR/linux_only" -maxdepth 1 -name "*.symlink"`
+_OSX_ONLY=`find "$_SOURCE_DIR/osx_only" -maxdepth 1 -name "*.symlink"`
 
 cd $_TARGET_DIR
 
 _link_to_target() {
-  if  [[ -e $_TARGET_DIR/$1 ]]
-  then
-    echo "$filename exists, skipping"
+  # echo "asked to link $1"
+  local _TARGET_FILENAME="$_TARGET_DIR/.$(basename $1 .symlink)"
+  # echo "target is $_TARGET_FILENAME"
+
+  # is it a symlink?
+  if [[ -h $_TARGET_FILENAME ]]; then
+    echo "Relinking $_TARGET_FILENAME"
+    `rm $_TARGET_FILENAME`
+    `ln -s $file $_TARGET_FILENAME`
+    # is it a dir?
+  elif [[ -d $_TARGET_FILENAME ]]; then
+    read -p "$_TARGET_FILENAME is a dir. Should I delete it?(y/n): " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+      echo "Removing directory $_TARGET_FILENAME"
+      `rm -rf $_TARGET_FILENAME`
+      `ln -s $file $_TARGET_FILENAME`
+    fi
+  # is it a regular file?
+  elif [[ -f $_TARGET_FILENAME ]]; then
+    `rm $_TARGET_FILENAME`
+    `ln -s $file $_TARGET_FILENAME`
   else
-    echo "Linking 'ln -s $file $_TARGET_DIR/$1'"
-    `ln -s $file $_TARGET_DIR/$1`
+    # echo "File $_TARGET_FILENAME  does not exists"
+    echo "Linking '$file to $_TARGET_FILENAME'"
+    `ln -s $file $_TARGET_FILENAME`
   fi
 }
 
-# Process files common for both Linux & OSX
-for file in $_COMMON_FILES; do
-  filename=${file##*/}
+_process_common_files() {
+  echo 'Processing common files..'
+  for file in $_COMMON_FILES; do
+    filename=${file##*/}
+    _link_to_target $filename
+  done
+}
 
-  # ignore .gitmodules
-  if [[ "$filename" == ".gitmodules" ]]; then
-    continue
+_process_linux_only() {
+  echo 'Processing linux files..'
+  if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    echo "Linux specific files"
+    for file in $_LINUX_ONLY; do
+      filename=${file##*/}
+      _link_to_target $filename
+    done
   fi
+}
 
-  _link_to_target $filename
-done
+_process_osx_only() {
+  echo 'Processing common files..'
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    for file in $_OSX_ONLY; do
+      filename=${file##*/}
+      _link_to_target $filename
+    done
+  fi
+}
 
-# Process Linux specifics
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
-  echo "Linux specific files"
-  for file in $_LINUX_ONLY; do
-    filename=${file##*/}
-    _link_to_target $filename
-  done
-fi
+_checkout_vundle_for_vim() {
+  if [ ! -e $_TARGET_DIR/.vim/bundle/vundle ]; then
+    echo 'Cloning vundle vim plugin'
+    git clone https://github.com/gmarik/vundle.git $_TARGET_DIR/.vim/bundle/Vundle.vim
+  fi
+}
 
-# Process OSX specifics
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  for file in $_OSX_ONLY; do
-    filename=${file##*/}
-    _link_to_target $filename
-  done
-fi
-
-
-# Link vimdir
-if [ ! -d $_TARGET_DIR/.vim ]; then
-  echo 'Linking .vim dir'
-  `ln -s $_SOURCE_DIR/.vim $_TARGET_DIR/.vim`
-fi
-
-# Checkout Vundle plugin for vim
-if [ ! -e $_TARGET_DIR/.vim/bundle/vundle ]; then
-  echo 'Cloning vundle vim plugin'
-  git clone https://github.com/gmarik/vundle.git $_TARGET_DIR/.vim/bundle/Vundle.vim
-fi
+_process_common_files
+_process_linux_only
+_process_osx_only
+_checkout_vundle_for_vim
