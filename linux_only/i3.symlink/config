@@ -146,9 +146,16 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+    colors {
+        statusline #ADD8E6
+    }
+
+
+        status_command conky -c ~/.i3/conkyrc
+        position top
 }
 
 for_window [class="^Spotify$"] floating enable
 
+bindsym $mod+Pause exec --no-startup-id i3lock -c 000000
 
