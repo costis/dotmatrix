@@ -158,4 +158,6 @@ bar {
 for_window [class="^Spotify$"] floating enable
 
 bindsym $mod+Pause exec --no-startup-id i3lock -c 000000
+bindsym $mod+bracketleft workspace prev
+bindsym $mod+bracketright workspace next
 
