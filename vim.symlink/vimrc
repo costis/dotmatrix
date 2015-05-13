@@ -226,9 +226,6 @@ call ctrlp_bdelete#init()
 nnoremap <leader>1 :NERDTreeToggle<CR>
 nnoremap <leader>! :NERDTreeFind<CR>
 
-" position cursor between braces
-imap <C-i> <CR><Esc>O
-
 let g:indent_guides_guide_size = 1
 let g:ycm_auto_trigger = 0
 
