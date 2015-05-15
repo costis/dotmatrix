@@ -175,20 +175,34 @@ set splitright
 " Split open pane below
 set splitbelow
 
-" Remove trailing whitespacing before saving
-autocmd BufWritePre *.rb :%s/\s\+$//e
-autocmd BufWritePre *.js :%s/\s\+$//e
-autocmd BufWritePre *.erb :%s/\s\+$//e
-autocmd BufWritePre *.rhtml :%s/\s\+$//e
+" Remove trailing whitespace from code files on save
+function! StripTrailingWhitespace()
+  " store current cursor location
+  silent exe "normal ma<CR>"
+  " store the current search value
+  let saved_search = @/
+  " delete the whitespace (e means don't warn if pattern not found)
+  %s/\s\+$//e
+  " restore old cursor location
+  silent exe "normal `a<CR>"
+  " restore the search value
+  let @/ = saved_search
+endfunction
 
-" Make the current window big, but leave others context
-" set winwidth=84
-" We have to have a winheight bigger than we want to set winminheight. But if
-" we set winheight to be huge before winminheight, the winminheight set will
-" fail.
-" set winheight=5
-" set winminheight=5
-" set winheight=999
+
+if has('autocmd')
+  augroup autocommandbots
+    autocmd!
+    " Remove trailing whitespace from various files
+    autocmd BufWritePre,FileWritePre *.html,*.rb,*.php,*.xml,*.erb,*.rhtml call StripTrailingWhitespace()
+    autocmd Filetype coffee,ruby,yaml,rake,rb,ru,javascript setlocal ts=2 sw=2 expandtab
+    autocmd BufNewFile,BufRead {*.rake,Podfile,Gemfile,Guardfile,Capfile,Rakefile,Thorfile,config.ru} set ft=ruby
+    autocmd BufNewFile,BufRead Gemfile.lock set ft=yaml
+    autocmd BufNewFile,BufRead *.json set ft=javascript
+    autocmd BufNewFile,BufRead *.prawn set ft=ruby
+    autocmd BufNewFile,BufRead *.go set ft=go
+  augroup END
+endif
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
@@ -229,6 +243,7 @@ nnoremap <leader>! :NERDTreeFind<CR>
 let g:indent_guides_guide_size = 1
 let g:ycm_auto_trigger = 0
 
+" Search with silver searcher
 nmap K :Ag "\b<C-R><C-W>\b"<CR>
 
 " Syntastic
