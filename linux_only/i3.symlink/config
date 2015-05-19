@@ -161,3 +161,5 @@ bindsym $mod+Pause exec --no-startup-id i3lock -c 000000
 bindsym $mod+bracketleft workspace prev
 bindsym $mod+bracketright workspace next
 
+exec --no-startup-id /opt/copy-agent/CopyAgent
+focus_follows_mouse no
