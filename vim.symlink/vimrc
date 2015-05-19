@@ -264,3 +264,6 @@ endif
 
 " scratch.vim settings
 let g:scratch_insert_autohide = 0
+
+" fugitive: checkout modified file with 'U'
+au FileType gitcommit nmap <buffer> U :Git checkout -- <c-r><c-g><cr>
