@@ -30,7 +30,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec i3-dmenu-desktop
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -156,10 +156,17 @@ bar {
 }
 
 for_window [class="^Spotify$"] floating enable
+# for_window [class="^Empathy"] floating enable
 
 bindsym $mod+Pause exec --no-startup-id i3lock -c 000000
 bindsym $mod+bracketleft workspace prev
 bindsym $mod+bracketright workspace next
 
-exec --no-startup-id /opt/copy-agent/CopyAgent
+# Applications
+bindsym $mod+F1 exec --no-startup-id firefox
+bindsym $mod+F2 exec --no-startup-id google-chrome
+
 focus_follows_mouse no
+#
+# startup apps
+exec --no-startup-id "/opt/copy-client/CopyAgent"
