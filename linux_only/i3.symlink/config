@@ -78,7 +78,8 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
+bindsym $mod+space exec i3-dmenu-desktop
 
 # focus the parent container
 bindsym $mod+a focus parent
