@@ -46,15 +46,11 @@ call vundle#end()
 
 filetype plugin indent on
 
+set t_Co=256
 set background=dark
 set colorcolumn=100
 
-" set t_Co=256
-" let g:solarized_termcolors=256
-" colorscheme solarized
-
 colorscheme lucius
-" LuciusBlack
 
 syntax on
 " set foldmethod=syntax
@@ -63,7 +59,6 @@ syntax on
 runtime macros/matchit.vim
 
 set nowrap "disable wrapping
-
 set hidden "you can change buffers without saving
 set expandtab
 set tabstop=2
