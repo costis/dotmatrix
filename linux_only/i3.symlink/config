@@ -171,3 +171,8 @@ focus_follows_mouse no
 #
 # startup apps
 exec --no-startup-id "/opt/copy-client/CopyAgent"
+
+# Volume control
+
+bindsym $mod+equal exec amixer -q set Master 2dB+ unmute
+bindsym $mod+minus exec amixer -q set Master 2dB- unmute
