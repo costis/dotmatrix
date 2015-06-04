@@ -42,6 +42,8 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'vim-scripts/dbext.vim'
 Plugin 'fatih/vim-go'
 Plugin 'mtth/scratch.vim'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-notes'
 call vundle#end()
 
 filetype plugin indent on
@@ -262,3 +264,5 @@ let g:scratch_insert_autohide = 0
 
 " fugitive: checkout modified file with 'U'
 au FileType gitcommit nmap <buffer> U :Git checkout -- <c-r><c-g><cr>
+
+let g:notes_directories = ['~/Copy/Notes']
