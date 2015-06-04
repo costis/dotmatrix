@@ -176,3 +176,8 @@ exec --no-startup-id "/opt/copy-client/CopyAgent"
 
 bindsym $mod+equal exec amixer -q set Master 2dB+ unmute
 bindsym $mod+minus exec amixer -q set Master 2dB- unmute
+
+# class                    border  backgr. text    indicator
+client.focused             #4c7899 #FF9900 #ffffff #2e9ef4
+client.unfocused_inactive  #DEE872 #DEE872 #000000 #dfdfdf
+client.unfocused           #16241B #798A82 #ffffff #dfdfdf
