@@ -3,22 +3,20 @@
 _SOURCE_DIR="$HOME/.dotmatrix"
 _TARGET_DIR="$HOME"
 _COMMON_FILES=`find $_SOURCE_DIR -maxdepth 1 -name "*.symlink"`
-_LINUX_ONLY=`find "$_SOURCE_DIR/linux_only" -maxdepth 1 -name "*.symlink"`
-_OSX_ONLY=`find "$_SOURCE_DIR/osx_only" -maxdepth 1 -name "*.symlink"`
+_LINUX_ONLY=`find "$_SOURCE_DIR/linux_specific" -maxdepth 1 -name "*.symlink"`
+_OSX_ONLY=`find "$_SOURCE_DIR/osx_specific" -maxdepth 1 -name "*.symlink"`
 
 cd $_TARGET_DIR
 
 _link_to_target() {
-  # echo "asked to link $1"
   local _TARGET_FILENAME="$_TARGET_DIR/.$(basename $1 .symlink)"
-  # echo "target is $_TARGET_FILENAME"
 
   # is it a symlink?
   if [[ -h $_TARGET_FILENAME ]]; then
     echo "Relinking $_TARGET_FILENAME"
     `rm $_TARGET_FILENAME`
     `ln -s $file $_TARGET_FILENAME`
-    # is it a dir?
+  # is it a dir?
   elif [[ -d $_TARGET_FILENAME ]]; then
     read -p "$_TARGET_FILENAME is a dir. Should I delete it?(y/n): " -n 1 -r
     echo
@@ -32,7 +30,6 @@ _link_to_target() {
     `rm $_TARGET_FILENAME`
     `ln -s $file $_TARGET_FILENAME`
   else
-    # echo "File $_TARGET_FILENAME  does not exists"
     echo "Linking '$file to $_TARGET_FILENAME'"
     `ln -s $file $_TARGET_FILENAME`
   fi
@@ -46,7 +43,7 @@ _process_common_files() {
   done
 }
 
-_process_linux_only() {
+_process_linux_specific() {
   echo 'Processing linux files..'
   if [[ "$OSTYPE" == "linux-gnu" ]]; then
     echo "Linux specific files"
@@ -57,7 +54,7 @@ _process_linux_only() {
   fi
 }
 
-_process_osx_only() {
+_process_osx_specific() {
   echo 'Processing common files..'
   if [[ "$OSTYPE" == "darwin"* ]]; then
     for file in $_OSX_ONLY; do
@@ -75,6 +72,6 @@ _checkout_vundle_for_vim() {
 }
 
 _process_common_files
-_process_linux_only
-_process_osx_only
+_process_linux_specific
+_process_osx_specific
 _checkout_vundle_for_vim
