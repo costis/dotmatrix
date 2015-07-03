@@ -60,3 +60,6 @@ bind-key -t vi-copy y copy-selection
 bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
 
 bind-key "'" last-window
+
+# looks like C-y conflicts with vim's 'emmet' plugin
+unbind-key C-y

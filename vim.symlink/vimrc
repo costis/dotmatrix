@@ -44,6 +44,9 @@ Plugin 'fatih/vim-go'
 Plugin 'mtth/scratch.vim'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-notes'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'mattn/emmet-vim'
 call vundle#end()
 
 filetype plugin indent on
@@ -266,3 +269,8 @@ let g:scratch_insert_autohide = 0
 au FileType gitcommit nmap <buffer> U :Git checkout -- <c-r><c-g><cr>
 
 let g:notes_directories = ['~/Copy/Notes']
+
+" ultisnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
