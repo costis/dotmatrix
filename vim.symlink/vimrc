@@ -45,6 +45,7 @@ Plugin 'mtth/scratch.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'mattn/emmet-vim'
+Plugin 'schickling/vim-bufonly'
 call vundle#end()
 
 filetype plugin indent on
