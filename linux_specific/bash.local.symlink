@@ -1,0 +1,4 @@
+# Golang env setup
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/projects/go
+export PATH=$PATH:$GOPATH/bin
