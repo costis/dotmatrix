@@ -273,3 +273,7 @@ let g:notes_directories = ['~/Copy/Notes']
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" NERDTree : make it same as CtrlP
+let NERDTreeMapOpenSplit='<c-x>'
+let NERDTreeMapOpenVSplit='<c-v>'
