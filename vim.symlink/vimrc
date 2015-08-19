@@ -1,52 +1,47 @@
-" Load pathogen.
-" Needed on some linux distros.
-" see http://www.adamlowe.me/2009/12/vim-destroys-all-other-rails-editors.html
 set nocompatible
 filetype off
 filetype plugin indent off
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
 
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'Townk/vim-autoclose'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'godlygeek/tabular'
-Plugin 'majutsushi/tagbar'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'rking/ag.vim'
-Plugin 'bling/vim-airline'
-Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'gregsexton/gitv.git'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'tpope/vim-markdown.git'
-Plugin 'tpope/vim-rails.git'
-Plugin 'vim-ruby/vim-ruby.git'
-Plugin 'tpope/vim-surround.git'
-Plugin 'kana/vim-textobj-user.git'
-Plugin 'nelstrom/vim-textobj-rubyblock.git'
-Plugin 'd11wtq/ctrlp_bdelete.vim'
-Plugin 'benmills/vimux'
-Plugin 'jgdavey/vim-turbux'
-Plugin 'justinmk/vim-gtfo'
-Plugin 'epeli/slimux'
-Plugin 'pangloss/vim-javascript'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'vim-scripts/dbext.vim'
-Plugin 'fatih/vim-go'
-Plugin 'mtth/scratch.vim'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'mattn/emmet-vim'
-Plugin 'schickling/vim-bufonly'
-call vundle#end()
+call plug#begin('~/.vim/plugged')
+Plug 'kien/ctrlp.vim'
+Plug 'Townk/vim-autoclose'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'godlygeek/tabular'
+Plug 'majutsushi/tagbar'
+Plug 'tomtom/tcomment_vim'
+Plug 'rking/ag.vim'
+Plug 'bling/vim-airline'
+Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'gregsexton/gitv'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'tpope/vim-markdown.git'
+Plug 'tpope/vim-rails'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-surround'
+Plug 'kana/vim-textobj-user'
+Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'd11wtq/ctrlp_bdelete.vim'
+Plug 'benmills/vimux'
+Plug 'jgdavey/vim-turbux'
+Plug 'justinmk/vim-gtfo'
+Plug 'epeli/slimux'
+Plug 'pangloss/vim-javascript'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'vim-scripts/dbext.vim'
+Plug 'fatih/vim-go'
+Plug 'mtth/scratch.vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'mattn/emmet-vim'
+Plug 'schickling/vim-bufonly'
+call plug#end()
 
 filetype plugin indent on
 
