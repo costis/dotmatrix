@@ -208,3 +208,5 @@ function tmux-rebind2(){
 if [[ -f $HOME/.bash.local ]] ; then
   . $HOME/.bash.local
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
