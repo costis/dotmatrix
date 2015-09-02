@@ -20,15 +20,13 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'gregsexton/gitv'
 Plug 'jelera/vim-javascript-syntax'
-Plug 'tpope/vim-markdown.git'
+Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-surround'
 Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'd11wtq/ctrlp_bdelete.vim'
-Plug 'benmills/vimux'
-Plug 'jgdavey/vim-turbux'
 Plug 'justinmk/vim-gtfo'
 Plug 'epeli/slimux'
 Plug 'pangloss/vim-javascript'
@@ -41,11 +39,12 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'mattn/emmet-vim'
 Plug 'schickling/vim-bufonly'
+Plug 'janko-m/vim-test'
 call plug#end()
 
 filetype plugin indent on
 
-set t_Co=256
+" set t_Co=256
 set background=dark
 set colorcolumn=100
 
@@ -84,18 +83,26 @@ inoremap jj <ESC>
 nmap <F3> :cn<CR> " find next occurance after vimgrep
 nmap <F4> :cp<CR> " find previous occurance after vimgrep
 
-" remap Turbux keybindings
-let g:no_turbux_mappings = 1
-map <leader>x <Plug>SendTestToTmux
-map <leader>X <Plug>SendFocusedTestToTmux
+let test#strategy = "basic"
+" vim-test bindings
+nmap <leader>X :TestNearest<CR>
+nmap <leader>x :TestFile<CR>
+nmap <leader>xs :TestSuite<CR>
+nmap <leader>xl :TestLast<CR>
+"nmap <silent> <leader>g :TestVisit<CR>
+
+" let g:no_turbux_mappings = 1
+" map <leader>x <Plug>SendTestToTmux
+" map <leader>X <Plug>SendFocusedTestToTmux
 
 " Turbux should use drb by default
-let g:turbux_command_prefix = 'bundle exec'
-let g:turbux_command_cucumber  = 'cucumber --drb'
-let g:turbux_command_rspec     = 'rspec -f d'
-let g:turbux_command_test_unit = 'ruby -Itest'
-
+" let g:turbux_command_prefix = 'bundle exec'
+" let g:turbux_command_cucumber  = 'cucumber --drb'
+" let g:turbux_command_rspec     = 'rspec -f d'
+" let g:turbux_command_test_unit = 'ruby -Itest'
+"
  "change default cursor keys to work on visual not actual lines
+
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
@@ -272,3 +279,5 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " NERDTree : make it same as CtrlP
 let NERDTreeMapOpenSplit='<c-x>'
 let NERDTreeMapOpenVSplit='<c-v>'
+
+nnoremap <leader>bw :w!<CR>
