@@ -40,6 +40,7 @@ Plug 'honza/vim-snippets'
 Plug 'mattn/emmet-vim'
 Plug 'schickling/vim-bufonly'
 Plug 'janko-m/vim-test'
+Plug 'embear/vim-localvimrc'
 call plug#end()
 
 filetype plugin indent on
@@ -281,3 +282,6 @@ let NERDTreeMapOpenSplit='<c-x>'
 let NERDTreeMapOpenVSplit='<c-v>'
 
 nnoremap <leader>bw :w!<CR>
+
+" Persist localvimrc selections
+let g:localvimrc_persistent=1
