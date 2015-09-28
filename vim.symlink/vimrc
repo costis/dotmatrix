@@ -20,7 +20,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'gregsexton/gitv'
 Plug 'jelera/vim-javascript-syntax'
-Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-surround'
@@ -42,6 +41,7 @@ Plug 'schickling/vim-bufonly'
 Plug 'janko-m/vim-test'
 Plug 'embear/vim-localvimrc'
 Plug 'mxw/vim-jsx'
+Plug 'plasticboy/vim-markdown'
 call plug#end()
 
 filetype plugin indent on
