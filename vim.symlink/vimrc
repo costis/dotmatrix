@@ -229,7 +229,7 @@ let g:bufferline_echo=0
 
 " TagBar
 let g:tagbar_autofocus = 1
-nnoremap <silent>2 :TagbarToggle<CR>
+nnoremap <silent><leader>2 :TagbarToggle<CR>
 
 " Don't allow gitgutter to update in realtime.
 let g:gitgutter_realtime = 0
