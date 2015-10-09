@@ -201,6 +201,7 @@ if has('autocmd')
     autocmd BufNewFile,BufRead *.json set ft=javascript
     autocmd BufNewFile,BufRead *.prawn set ft=ruby
     autocmd BufNewFile,BufRead *.go set ft=go
+    autocmd! BufNewFile,BufRead *.raml set filetype=yaml foldmethod=indent
   augroup END
 endif
 
