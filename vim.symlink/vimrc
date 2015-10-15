@@ -149,9 +149,6 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" don't forget to install with 'npm install jsxhint -g'
-let g:syntastic_javscript_checkers = ['jsxhint']
-
 " For vimdiff
 set diffopt=filler
 " set diffopt+=iwhite
@@ -277,6 +274,7 @@ let g:localvimrc_persistent=1
 " Enable jsx support in .js files
 let g:jsx_ext_required = 0
 
+" don't forget to install with 'npm install eslint -g'
 let g:syntastic_javascript_checkers = ['eslint']
 
 " ensure file watchers fire on save
