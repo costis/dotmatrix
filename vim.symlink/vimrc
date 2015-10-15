@@ -245,6 +245,8 @@ nnoremap <Leader>ws :split<CR>
 nnoremap <Leader>wvs :vert<CR>
 nnoremap <Leader>wo :only<CR>
 
+nnoremap <Leader>1 :Explore<CR>
+
 " Ruby options
 let g:ruby_indent_access_modifier_style = 'indent'
 

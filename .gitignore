@@ -1,2 +1,4 @@
 vim.symlink/plugged/
 vim.symlink/autoload/
+vim.symlink/bundle/
+vim.symlink/.netrwhist
