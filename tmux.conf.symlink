@@ -64,3 +64,8 @@ bind-key "'" last-window
 
 # looks like C-y conflicts with vim's 'emmet' plugin
 unbind-key C-y
+
+# split with default dir
+bind '"' split-window -c "#{pane_current_path}"
+bind % split-window   -c "#{pane_current_path}"
+bind c new-window     -c "#{pane_current_path}"
