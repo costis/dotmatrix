@@ -13,10 +13,10 @@ bind k select-pane -U
 bind l select-pane -R
 
 # resize panes like vim
-bind-key -r < resize-pane -L 1
-bind-key -r > resize-pane -R 1
-bind-key -r + resize-pane -U 1
-bind-key -r _ resize-pane -D 1
+bind-key -r H resize-pane -L 1
+bind-key -r L resize-pane -R 1
+bind-key -r K resize-pane -U 1
+bind-key -r J resize-pane -D 1
 # bind-key -r = select-layout even-vertical
 # bind-key -r | select-layout even-horizontal
 
