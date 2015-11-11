@@ -66,3 +66,6 @@ unbind-key C-y
 bind '"' split-window -c "#{pane_current_path}"
 bind % split-window   -c "#{pane_current_path}"
 bind c new-window     -c "#{pane_current_path}"
+
+# toggle status bar visibility
+bind-key S set-option -s status
