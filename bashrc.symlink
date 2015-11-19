@@ -104,15 +104,7 @@ get_git_branch() {
   [ -n "$br" ] && echo "[@$br$(git_has_stash)$(git_dirty)]"
 }
 
-_get_rvm_prompt(){
-  if hash rvm-prompt 2> /dev/null; then
-    echo "[$(rvm-prompt v g)]"
-  else
-    echo ""
-  fi
-}
-
-export PS1='\u@\h:\w\[\033[34m\]$(get_git_branch)\[\033[0m\]\[\033[36m\]$(_get_rvm_prompt)\[\033[0m\]$ '
+export PS1='\u@\h:\w\[\033[34m\]$(get_git_branch)\[\033[0m\]$ '
 
 # Load env vars with credentials for web apps
 if [ -f ~/.dev_vars ]; then
@@ -200,12 +192,12 @@ function tmr(){
   echo Cannot find ssh agent - maybe you should reconnect and forward it?
 }
 
-# Ruby RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
 # Platform specific settings. It is linked from ~/.dotfiles/osx_only or ~/.dotfiles/linux_only
 if [[ -f $HOME/.bash.local ]] ; then
   . $HOME/.bash.local
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# chruby
+[ -f /usr/local/share/chruby/chruby.sh ] && source /usr/local/share/chruby/chruby.sh
+[ -f /usr/local/share/chruby/auto.sh ] && source /usr/local/share/chruby/auto.sh
