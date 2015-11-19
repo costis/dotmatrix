@@ -1,0 +1,92 @@
+# Easily switch to project directories
+function cpd() {
+  if (( $# > 0 )); then
+    folders=($(find ~/projects -maxdepth 1 -type d -iname *$1* ))
+    if [ ${#folders[@]} -eq 1  ]; then
+      pushd ${folders[0]} 1> /dev/null
+    elif [ ${#folders[@]} -eq 0 ]; then
+      folders=($(find ~/projects -type d -maxdepth 1))
+    fi
+  else
+    folders=($(find ~/projects -type d -maxdepth 1))
+  fi
+
+  while [ ${#folders[@]} -gt 1 ]; do
+    # display a selection menu
+    i=0
+    for f in ${folders[@]}; do
+      echo " " $i - ${f##*/}
+      ((i++))
+    done
+    read -p "Select project: " user_input
+
+    # selection by number?
+    if [[ $user_input =~ ^[0-9]+$ ]]; then
+      d=${folders[$user_input]}
+      pushd ~/projects/${d##*/} 1> /dev/null
+      break
+    # user has entered a string. Search again.
+    else
+      folders=($(find ~/projects -name *$user_input* -type d -maxdepth 1))
+      if [[ ${#folders[@]} -eq 1 ]]; then
+        pushd ${folders[0]} 1> /dev/null
+        break
+      fi
+    fi
+  done
+
+  return 0
+}
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias less='less -R'
+alias tmux='tmux -2'
+alias be='bundle exec'
+alias g='git'
+alias dirs='dirs -v'
+alias npm-exec='PATH=$(npm bin):$PATH'
+
+# tmux aliases
+alias tml='tmux ls'
+alias tma='tmux attach -t $1'
+alias tmc='tmux new-session -s $1'
+
+function tms(){
+  tmux new-session -s $1
+}
+
+# rebind to ssh-agent
+function tmr(){
+  export SSH_AUTH_SOCK=$(find /tmp/ssh-* -user `whoami` -name agent\* -printf '%T@ %p\n' 2>/dev/null | sort -k 1nr | sed 's/^[^ ]* //' | head -n 1)
+  if $(ssh-add -l > /dev/null) ; then
+    echo Found working SSH Agent:
+    ssh-add -l
+    return
+  fi
+  echo Cannot find ssh agent - maybe you should reconnect and forward it?
+}
+
+# easy open
+function o { xdg-open "$@";}
+
+# docker
+alias dc='docker-compose'

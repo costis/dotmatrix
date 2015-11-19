@@ -23,41 +23,6 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-alias less='less -R'
-alias tmux='tmux -2'
-alias be='bundle exec'
-alias g='git'
-alias dirs='dirs -v'
-alias npm-exec='PATH=$(npm bin):$PATH'
-
-# tmux aliases
-alias tml='tmux ls'
-alias tma='tmux attach -t $1'
-alias tmc='tmux new-session -s $1'
-
-# easy open
-function o { xdg-open "$@";}
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -79,8 +44,6 @@ export EDITOR=vim
 export BROWSER=/usr/bin/google-chrome
 
 bind -m vi-insert "C-l":clear-screen
-
-[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
 git_has_stash() {
   if [[ -n $(git stash list 2> /dev/null) ]]; then
@@ -106,53 +69,8 @@ get_git_branch() {
 
 export PS1='\u@\h:\w\[\033[34m\]$(get_git_branch)\[\033[0m\]$ '
 
-# Load env vars with credentials for web apps
-if [ -f ~/.dev_vars ]; then
-    . ~/.dev_vars
-fi
-
 # export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 # export LESS=' -R '
-
-# Easily switch to project directories
-function cpd() {
-  if (( $# > 0 )); then
-    folders=($(find ~/projects -maxdepth 1 -type d -iname *$1* ))
-    if [ ${#folders[@]} -eq 1  ]; then
-      pushd ${folders[0]} 1> /dev/null
-    elif [ ${#folders[@]} -eq 0 ]; then
-      folders=($(find ~/projects -type d -maxdepth 1))
-    fi
-  else
-    folders=($(find ~/projects -type d -maxdepth 1))
-  fi
-
-  while [ ${#folders[@]} -gt 1 ]; do
-    # display a selection menu
-    i=0
-    for f in ${folders[@]}; do
-      echo " " $i - ${f##*/}
-      ((i++))
-    done
-    read -p "Select project: " user_input
-
-    # selection by number?
-    if [[ $user_input =~ ^[0-9]+$ ]]; then
-      d=${folders[$user_input]}
-      pushd ~/projects/${d##*/} 1> /dev/null
-      break
-    # user has entered a string. Search again.
-    else
-      folders=($(find ~/projects -name *$user_input* -type d -maxdepth 1))
-      if [[ ${#folders[@]} -eq 1 ]]; then
-        pushd ${folders[0]} 1> /dev/null
-        break
-      fi
-    fi
-  done
-
-  return 0
-}
 
 # Bash Vi mode
 set -o vi
@@ -177,27 +95,17 @@ if [ -d "$HOME/.npm" ] ; then
     PATH="$HOME/.npm/bin:$PATH"
 fi
 
-function tms(){
-  tmux new-session -s $1
-}
-
-# rebind to ssh-agent
-function tmr(){
-  export SSH_AUTH_SOCK=$(find /tmp/ssh-* -user `whoami` -name agent\* -printf '%T@ %p\n' 2>/dev/null | sort -k 1nr | sed 's/^[^ ]* //' | head -n 1)
-  if $(ssh-add -l > /dev/null) ; then
-    echo Found working SSH Agent:
-    ssh-add -l
-    return
-  fi
-  echo Cannot find ssh agent - maybe you should reconnect and forward it?
-}
-
 # Platform specific settings. It is linked from ~/.dotfiles/osx_only or ~/.dotfiles/linux_only
 if [[ -f $HOME/.bash.local ]] ; then
   . $HOME/.bash.local
 fi
 
+# https://github.com/junegunn/fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-# chruby
+
+# https://github.com/wting/autojump
+[[ -s /etc/profile.d/autojump.sh ]] && . /etc/profile.d/autojump.sh
+
+# https://github.com/postmodern/chruby
 [ -f /usr/local/share/chruby/chruby.sh ] && source /usr/local/share/chruby/chruby.sh
 [ -f /usr/local/share/chruby/auto.sh ] && source /usr/local/share/chruby/auto.sh
