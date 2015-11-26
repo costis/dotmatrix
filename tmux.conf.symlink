@@ -6,34 +6,13 @@ set -g escape-time 20
 set -g base-index 1
 set -g pane-base-index 1
 
-bind h select-pane -L
-bind j select-pane -D
-bind k select-pane -U
-bind l select-pane -R
-
-# resize panes like vim
-bind-key -r H resize-pane -L 1
-bind-key -r L resize-pane -R 1
-bind-key -r K resize-pane -U 1
-bind-key -r J resize-pane -D 1
-# bind-key -r = select-layout even-vertical
-# bind-key -r | select-layout even-horizontal
-
-# copy-paste ala vim
-bind-key -t vi-copy v begin-selection
-bind-key -t vi-copy y copy-selection
-bind-key -t vi-copy V rectangle-toggle
-
 ## set status bar
 set-option -g status-utf8 on
 set-option -g status-bg colour234
 set-option -g status-fg colour7
 
-#set-option -g status-left '⣿'
-#set-option -g status-right '⡇ #[bold]❐ #S:#I#[default] ⡇ #[bold]#(whoami) ● #H#[default] '
 set-option -g status-right '⡇ #(whoami)@#H'
 set-option -g status-left '#[bold] #S#[default] ⡇'
-#set-option -g status-right '#[bold]#(whoami) ● #H#[default] '
 
 set-option -g status-right-length 60
 set-option -g status-left-length 60
@@ -44,28 +23,41 @@ set-window-option -g window-status-current-fg colour15
 set-window-option -g window-status-current-attr bold
 set-window-option -g window-status-current-format ' #I #W#F'
 
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+# resize panes like vim
+bind-key -r H resize-pane -L 1
+bind-key -r L resize-pane -R 1
+bind-key -r K resize-pane -U 1
+bind-key -r J resize-pane -D 1
+
 # send the prefix to a nested client inside of the window
 bind-key a send-prefix
 
 # easy pane join
 bind-key @ command-prompt -p "join pane from: "  " join-pane -s '%%'"
 
-# copy to OSX clipboard. 
-# 'Enter' copies to OSX clipboard, y copies to tmux cboard (a la vim)
-# Set 'v' to start the copy process, like vim
+# copy-paste ala vim
 unbind -t vi-copy Enter
 bind-key -t vi-copy v begin-selection
 bind-key -t vi-copy y copy-selection
+bind-key -t vi-copy V rectangle-toggle
 
+# copy to OSX clipboard
 bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
 
 # looks like C-y conflicts with vim's 'emmet' plugin
 unbind-key C-y
 
 # split with default dir
-bind '"' split-window -c "#{pane_current_path}"
-bind % split-window   -c "#{pane_current_path}"
-bind c new-window     -c "#{pane_current_path}"
+bind '"' split-window -v -c "#{pane_current_path}"
+bind % split-window -h   -c "#{pane_current_path}"
+bind c new-window        -c "#{pane_current_path}"
 
 # toggle status bar visibility
 bind-key S set-option -s status
+
+bind-key '\;' last-window
