@@ -1,0 +1,4 @@
+let mapleader=","
+
+nnoremap <Leader>bp :action PreviousTab<CR>
+nnoremap <Leader>bn :action NextTab<CR>
