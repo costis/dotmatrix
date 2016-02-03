@@ -7,6 +7,7 @@ filetype plugin indent off
 call plug#begin('~/.vim/plugged')
 Plug 'kien/ctrlp.vim'
 Plug 'Townk/vim-autoclose'
+Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'godlygeek/tabular'
 Plug 'majutsushi/tagbar'
@@ -43,7 +44,6 @@ Plug 'mxw/vim-jsx'
 Plug 'plasticboy/vim-markdown'
 Plug 'elzr/vim-json'
 Plug 'ngmy/vim-rubocop'
-Plug 'tpope/vim-vinegar'
 call plug#end()
 
 filetype plugin indent on
@@ -143,6 +143,12 @@ set statusline+=%*
 " Statusline always visible
 set laststatus=2
 
+" Close NERDTree when opening a file
+let g:NERDTreeQuitOnOpen = 1
+
+" Size of window
+let g:NERDTreeWinSize = 40
+
 " Enable syntastic syntax checking
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -231,6 +237,9 @@ let g:gitgutter_realtime = 0
 " Deleting buffers in CtrlP, with a plugin
 call ctrlp_bdelete#init()
 
+nnoremap <leader>1 :NERDTreeToggle<CR>
+nnoremap <leader>! :NERDTreeFind<CR>
+
 let g:indent_guides_guide_size = 1
 let g:ycm_auto_trigger = 0
 
@@ -244,8 +253,6 @@ nnoremap <Leader>wq :close<CR>
 nnoremap <Leader>ws :split<CR>
 nnoremap <Leader>wvs :vert<CR>
 nnoremap <Leader>wo :only<CR>
-
-nnoremap <Leader>1 :Explore<CR>
 
 " Ruby options
 let g:ruby_indent_access_modifier_style = 'indent'
@@ -267,6 +274,10 @@ let g:notes_directories = ['~/Copy/Notes']
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" NERDTree : make it same as CtrlP
+let NERDTreeMapOpenSplit='<c-x>'
+let NERDTreeMapOpenVSplit='<c-v>'
 
 nnoremap <leader>bw :w!<CR>
 
