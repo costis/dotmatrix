@@ -44,6 +44,7 @@ Plug 'mxw/vim-jsx'
 Plug 'plasticboy/vim-markdown'
 Plug 'elzr/vim-json'
 Plug 'ngmy/vim-rubocop'
+Plug 'drn/zoomwin-vim'
 call plug#end()
 
 filetype plugin indent on
@@ -249,10 +250,7 @@ nmap K :Ag! "\b<C-R><C-W>\b"<CR>
 " Syntastic
 let g:syntastic_eruby_ruby_quiet_messages = {'regex': 'useless use of a variable in void context'}
 
-nnoremap <Leader>wq :close<CR>
-nnoremap <Leader>ws :split<CR>
-nnoremap <Leader>wvs :vert<CR>
-nnoremap <Leader>wo :only<CR>
+nnoremap <c-w>O :only<CR>
 
 " Ruby options
 let g:ruby_indent_access_modifier_style = 'indent'
