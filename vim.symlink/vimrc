@@ -309,3 +309,6 @@ function! s:get_visual_selection()
 endfunction
 
 set rnu
+
+nnoremap <Leader>ve :split $MYVIMRC<cr>
+nnoremap <Leader>vs :source $MYVIMRC<cr>
