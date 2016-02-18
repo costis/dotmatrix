@@ -44,6 +44,7 @@ Plug 'mxw/vim-jsx'
 Plug 'plasticboy/vim-markdown'
 Plug 'elzr/vim-json'
 Plug 'ngmy/vim-rubocop'
+Plug 'tpope/vim-unimpaired'
 Plug 'drn/zoomwin-vim'
 call plug#end()
 
