@@ -61,3 +61,6 @@ bind c new-window        -c "#{pane_current_path}"
 bind-key S set-option -s status
 
 bind-key '\;' last-window
+
+bind-key -n  C-S-Left swap-window -t -1
+bind-key -n C-S-Right swap-window -t +1
