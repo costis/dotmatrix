@@ -47,6 +47,7 @@ Plug 'ngmy/vim-rubocop'
 Plug 'tpope/vim-unimpaired'
 Plug 'drn/zoomwin-vim'
 Plug 'epeli/slimux'
+Plug 'leafgarland/typescript-vim'
 call plug#end()
 
 filetype plugin indent on
