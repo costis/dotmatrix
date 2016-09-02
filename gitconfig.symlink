@@ -26,7 +26,7 @@
   d = diff
   dc = diff --cached
   br = branch
-  lg = log --pretty=format:\"%C(bold blue)%h%C(reset) %ad -%C(green)%d%Creset %s %C(bold yellow)[%an]%C(reset)\" --graph --date=short
+  lg = log --pretty=format:\"%C(bold blue)%h%C(reset) %ad -%C(green)%d%Creset %s\" --graph --date=short
   l  = log --pretty=format:\"%C(bold blue)%h%C(reset) %ad -%C(green)%d%Creset %s %C(bold yellow)[%an]%C(reset)\" --graph --date=short --all
   type = cat-file -t
   dump = cat-file -p
