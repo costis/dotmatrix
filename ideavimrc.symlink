@@ -6,7 +6,9 @@ nnoremap <Leader>bn :action NextTab<CR>
 nnoremap <Leader>gb :action Annotate<CR>
 nnoremap ]m :action MethodDown<CR>
 nnoremap [m :action MethodUp<CR>
+nnoremap <Leader>s :action SaveDocument<CR>
+nnoremap <Leader>1 :action ActivateProjectToolWindow<CR>
+nnoremap <Leader>w :action Switcher<CR>
 
 set surround
-
-nnoremap <Leader>s :action SaveDocument<CR>
+set rnu
