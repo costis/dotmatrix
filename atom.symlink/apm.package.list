@@ -7,6 +7,7 @@ elm-format@2.1.0
 elm-instant@0.5.1
 ex-mode@0.13.0
 file-icons@1.7.22
+git-plus@5.18.0
 language-elm@1.5.0
 linter@1.11.18
 linter-elm-make@0.17.7
