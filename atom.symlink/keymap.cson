@@ -28,3 +28,10 @@
 
 'atom-text-editor.vim-mode-plus.normal-mode':
   'ctrl-r': 'run:file'
+
+'body':
+  # Find action
+  'cmd-shift-a': 'command-palette:toggle'
+
+  # Open corresponding tool window
+  'cmd-1': 'tree-view:toggle'

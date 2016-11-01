@@ -9,12 +9,15 @@
       "terminal-plus"
       "api-workbench"
       "atom-terminal"
+      "git-plus"
     ]
     openEmptyEditorOnStart: false
     projectHome: "/Users/costisp/projects"
     telemetryConsent: "no"
   editor:
     invisibles: {}
+  elmjutsu:
+    cacheDirectory: "/var/folders/zk/7f1fdwg91vj3sjl74qm4gdb00000gn/T/elmjutsu3015786NYicix7YBS"
   "exception-reporting":
     userId: "26f1d79c-57be-e2f5-9b69-bb8e95c56c3f"
   "language-elm":
@@ -23,6 +26,7 @@
     errorPanelHeight: 294
   "linter-elm-make":
     elmMakeExecutablePath: "/usr/local/bin/elm-make"
+    reportWarnings: false
   "terminal-plus":
     core: {}
     style: {}
