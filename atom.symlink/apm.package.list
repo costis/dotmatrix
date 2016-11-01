@@ -4,7 +4,8 @@ atom-runner@2.7.1
 atom-terminal@0.8.0
 color-picker@2.2.2
 elm-format@2.1.0
-elm-instant@0.5.1
+elm-instant@0.8.1
+elmjutsu@2.8.3
 ex-mode@0.13.0
 file-icons@1.7.22
 git-plus@5.18.0
@@ -12,7 +13,8 @@ language-elm@1.5.0
 linter@1.11.18
 linter-elm-make@0.17.7
 platformio-ide-terminal@2.2.0
+project-manager@3.2.5
 terminal-plus@0.14.5
-vim-mode-plus@0.60.1
+vim-mode-plus@0.63.0
 
 
