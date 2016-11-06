@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name> Fn + i gives Cursor UP</name>
+    <identifier>private.fn_and_i_does_cursor_up</identifier>
+    <autogen>
+        __KeyToKey__
+        KeyCode::I, ModifierFlag::FN,
+        KeyCode::CURSOR_UP
+    </autogen>
+  </item>
+
+  <item>
+    <name> Fn + k gives Cursor DOWN</name>
+    <identifier>private.fn_and_k_does_cursor_down</identifier>
+    <autogen>
+        __KeyToKey__
+        KeyCode::K, ModifierFlag::FN,
+        KeyCode::CURSOR_DOWN
+    </autogen>
+  </item>
+
+  <item>
+    <name> Fn + j gives Cursor LEFT</name>
+    <identifier>private.fn_and_j_does_cursor_left</identifier>
+    <autogen>
+        __KeyToKey__
+        KeyCode::J, ModifierFlag::FN,
+        KeyCode::CURSOR_LEFT
+    </autogen>
+  </item>
+
+  <item>
+    <name> Fn + l gives Cursor RIGHT</name>
+    <identifier>private.fn_and_l_does_cursor_right</identifier>
+    <autogen>
+        __KeyToKey__
+        KeyCode::L, ModifierFlag::FN,
+        KeyCode::CURSOR_RIGHT
+    </autogen>
+  </item>
+
+  <!-- PageUp / PageDown -->
+  <item>
+    <name> Fn + u gives Page Up</name>
+    <identifier>private.fn_and_u_does_page_up</identifier>
+    <autogen>
+        __KeyToKey__
+        KeyCode::U, ModifierFlag::FN,
+        KeyCode::PAGEUP
+    </autogen>
+  </item>
+
+  <item>
+    <name> Fn + o gives Page Down</name>
+    <identifier>private.fn_and_o_does_page_down</identifier>
+    <autogen>
+        __KeyToKey__
+        KeyCode::O, ModifierFlag::FN,
+        KeyCode::PAGEDOWN
+    </autogen>
+  </item>
+
+
+  <!-- Fn keys -->
+  <item>
+    <name> Fn + 2 gives F2</name>
+    <identifier>private.fn_and_2_does_F2</identifier>
+    <autogen>
+        __KeyToKey__
+        KeyCode::2, ModifierFlag::FN,
+        KeyCode::F2
+    </autogen>
+  </item>
+
+
+  <item>
+    <name> Fn + 3 gives F3</name>
+    <identifier>private.fn_and_3_does_F3</identifier>
+    <autogen>
+        __KeyToKey__
+        KeyCode::3, ModifierFlag::FN,
+        KeyCode::F3
+    </autogen>
+  </item>
+
+
+  <item>
+    <name> Fn + 4 gives F4</name>
+    <identifier>private.fn_and_4_does_F4</identifier>
+    <autogen>
+        __KeyToKey__
+        KeyCode::4, ModifierFlag::FN,
+        KeyCode::F4
+    </autogen>
+  </item>
+
+  <item>
+    <name> Fn + 5 gives F5</name>
+    <identifier>private.fn_and_5_does_F4</identifier>
+    <autogen>
+        __KeyToKey__
+        KeyCode::5, ModifierFlag::FN,
+        KeyCode::F5
+    </autogen>
+  </item>
+
+  <item>
+    <name> Fn + 6 gives F6</name>
+    <identifier>private.fn_and_6_does_F6</identifier>
+    <autogen>
+        __KeyToKey__
+        KeyCode::6, ModifierFlag::FN,
+        KeyCode::F6
+    </autogen>
+  </item>
+
+  <item>
+    <name> Fn + 7 gives F7</name>
+    <identifier>private.fn_and_7_does_F7</identifier>
+    <autogen>
+        __KeyToKey__
+        KeyCode::7, ModifierFlag::FN,
+        KeyCode::F7
+    </autogen>
+  </item>
+
+
+    <item>
+    <name> Fn + = gives F12</name>
+    <identifier>private.fn_and_equals_does_F12</identifier>
+    <autogen>
+        __KeyToKey__
+        KeyCode::EQUAL, ModifierFlag::FN,
+        KeyCode::F12
+    </autogen>
+  </item>
+
+</root>
