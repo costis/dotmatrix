@@ -16,6 +16,9 @@ set-option -g status-left '#[bold] #S#[default] ⡇'
 set-option -g status-right-length 60
 set-option -g status-left-length 60
 
+# status line timeout 4sec
+set-option display-time 4000
+#
 ## highlight active window
 set-window-option -g window-status-current-bg colour166
 set-window-option -g window-status-current-fg colour15
