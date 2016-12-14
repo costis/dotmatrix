@@ -67,7 +67,7 @@ get_git_branch() {
   [ -n "$br" ] && echo "[@$br$(git_has_stash)$(git_dirty)]"
 }
 
-export PS1='\u@\h:\w\[\033[34m\]$(get_git_branch)\[\033[0m\]$ '
+export PS1='$(dirs -0 | tr -s " " | cut -d" " -f 3)\[\033[34m\]$(get_git_branch)\[\033[0m\]$ '
 
 # export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 # export LESS=' -R '
@@ -106,6 +106,14 @@ fi
 # https://github.com/wting/autojump
 [[ -s /etc/profile.d/autojump.sh ]] && . /etc/profile.d/autojump.sh
 
-# https://github.com/postmodern/chruby
-[ -f /usr/local/share/chruby/chruby.sh ] && source /usr/local/share/chruby/chruby.sh
-[ -f /usr/local/share/chruby/auto.sh ] && source /usr/local/share/chruby/auto.sh
+
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+	. $(brew --prefix)/etc/bash_completion
+fi
+
+# for brew
+export PATH="/usr/local/sbin:$PATH"
+
+if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
+
+export HOMEBREW_GITHUB_API_TOKEN=86d083eb0b77b45c65e390fa01b2befc9f308ed6
