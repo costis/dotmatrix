@@ -90,3 +90,10 @@ color   tree.directory         221     default
 
 # Delete untracked file in Diff view
 bind status D !@?rm %(file)
+
+# Show diff in merge commits
+bind diff 7 !git diff %(commit)^ %(commit)
+bind diff 8 !git difftool %(commit)^ %(commit)
+
+# show commit has in main view
+set main-view-id = yes
