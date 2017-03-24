@@ -1,5 +1,8 @@
 let mapleader=","
 
+set ignorecase smartcase
+set showmode
+
 inoremap jj <Esc>`^
 nnoremap <Leader>bp :action PreviousTab<CR>
 nnoremap <Leader>bn :action NextTab<CR>
@@ -9,6 +12,18 @@ nnoremap [m :action MethodUp<CR>
 nnoremap <Leader>s :action SaveDocument<CR>
 nnoremap <Leader>1 :action ActivateProjectToolWindow<CR>
 nnoremap <Leader>w :action Switcher<CR>
+nnoremap <Leader>s :action SaveDocument<CR>
+nnoremap <Leader>pw :action OpenProjectWindows<CR>
+nnoremap <Leader>pwn :action NextProjectWindow<CR>
+map \pw :action OpenProjectWindows<CR>
+
+
+" built-in navigation to navigated items works better
+nnoremap <c-o> :action Back<cr>
+nnoremap <c-i> :action Forward<cr>
+" but preserve ideavim defaults
+nnoremap g<c-o> <c-o>
+nnoremap g<c-i> <c-i>
 
 set surround
 set rnu
