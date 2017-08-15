@@ -1,7 +1,6 @@
 set -g default-terminal "screen-256color"
 
 set -g default-shell $SHELL 
-set -g default-command "reattach-to-user-namespace -l ${SHELL}"
 
 set-window-option -g mode-keys vi
 set -g escape-time 20 
@@ -21,7 +20,7 @@ set-option -g status-right-length 60
 set-option -g status-left-length 60
 
 # status line timeout 4sec
-set-option display-time 4000
+set-option -g display-time 8000
 #
 ## highlight active window
 set-window-option -g window-status-current-bg colour166
@@ -46,15 +45,15 @@ bind-key a send-prefix
 # easy pane join
 bind-key @ command-prompt -p "join pane from: "  " join-pane -s '%%'"
 
-# copy-paste ala vim
-unbind -t vi-copy Enter
-bind-key -t vi-copy v begin-selection
-# bind-key -t vi-copy y copy-selection
-bind-key -t vi-copy V rectangle-toggle
+# vim mode for tmux >= v2.4
+bind-key -T edit-mode-vi Up send-keys -X history-up
+bind-key -T edit-mode-vi Down send-keys -X history-down
 
-# copy to OSX clipboard
-bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
-bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
+unbind-key -T copy-mode-vi Space     ;   bind-key -T copy-mode-vi v send-keys -X begin-selection
+unbind-key -T copy-mode-vi Enter     ;   bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "reattach-to-user-namespace pbcopy"
+unbind-key -T copy-mode-vi C-v       ;   bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
+unbind-key -T copy-mode-vi [         ;   bind-key -T copy-mode-vi [ send-keys -X begin-selection
+unbind-key -T copy-mode-vi ]         ;   bind-key -T copy-mode-vi ] send-keys -X copy-selection
 
 # looks like C-y conflicts with vim's 'emmet' plugin
 unbind-key C-y
