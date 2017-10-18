@@ -1,6 +1,7 @@
 [core]
 	autocrlf = input
 	safecrlf = true
+	excludesfile = /Users/costis.panagiotopoulos/.gitignore_global
 [color]
   ui = auto
 [color "branch"]
@@ -27,11 +28,17 @@
   dc = diff --cached
   br = branch
   lg = log --pretty=format:\"%C(bold blue)%h%C(reset) %ad -%C(green)%d%Creset %s\" --graph --date=short
-  l  = log --pretty=format:\"%C(bold blue)%h%C(reset) %ad -%C(green)%d%Creset %s %C(bold yellow)[%an]%C(reset)\" --graph --date=short --all
+  lga  = log --pretty=format:\"%C(bold blue)%h%C(reset) %ad -%C(green)%d%Creset %s %C(bold yellow)[%an]%C(reset)\" --graph --date=short --all
   type = cat-file -t
   dump = cat-file -p
   df = diff
   dh = diff HEAD~1
+  stash-all = stash save --include-untracked
+  fa = fetch --all
+  fap = fetch --all --prune
+  brll = branch -l
+  brlr = branch -r
+  brl = branch -a 
 
 [merge]
 	tool = vimdiff
@@ -40,3 +47,25 @@
 	name = Costis Panagiotopoulos
 [push]
 	default = simple
+[status]
+  showUntrackedFiles = all
+[diff]
+  tool = icdiff
+[difftool]
+  prompt = false
+[difftool "icdiff"]
+  cmd = /usr/local/bin/icdiff --line-numbers $LOCAL $REMOTE
+[commit]
+  gpgSign = true
+	template = /Users/costis.panagiotopoulos/.stCommitMsg
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
