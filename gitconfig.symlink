@@ -40,8 +40,6 @@
   brlr = branch -r
   brl = branch -a 
 
-[merge]
-	tool = vimdiff
 [user]
 	email = costisp@gmail.com
 	name = Costis Panagiotopoulos
@@ -66,6 +64,10 @@
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[mergetool]
+	prompt = false
+[log]
+	follow = true
