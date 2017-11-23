@@ -97,3 +97,5 @@ bind diff 8 !git difftool %(commit)^ %(commit)
 
 # show commit has in main view
 set main-view-id = yes
+
+bind generic 9 !@sh -c "/bin/echo -n %(commit) | pbcopy;tmux set-buffer -b commit_sha %(commit)"
