@@ -5,9 +5,15 @@ set -g default-shell $SHELL
 set-window-option -g mode-keys vi
 set -g escape-time 20 
 
+# vi mode editing on tmux command line
+set -g status-keys vi
+
 ## start window and pane numbering at 1
 set -g base-index 1
 set -g pane-base-index 1
+
+# size for pane buffer set to 8k
+set-option -g history-limit 8000
 
 ## set status bar
 set-option -g status-bg colour234
