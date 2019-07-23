@@ -93,6 +93,29 @@ alias dc='docker-compose'
 alias dcr='docker-compose run'
 alias dcu='docker-compose up'
 alias dcps='docker-compose ps'
+alias docker-prune='docker system df && docker container prune && docker volume prune && docker system prune && docker system df'
 
 # GitX for OSX
 alias gitx='open -a GitX .'
+alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+
+alias tiga="tig --all"
+
+alias oldkube='brew switch kubernetes-cli 1.10.4'
+alias newkube='brew switch kubernetes-cli 1.12.2'
+
+# kubernetes
+alias kx='kubectx'
+alias kxzp='kubectx zeus-production'
+alias kxzs='kubectx zeus-staging'
+alias kxap='kubectx apollo-prod'
+alias kps='kubectl get pods'
+alias klog='kubectl logs'
+alias klogf='kubectl logs -f'
+alias kexec='kubectl exec -ti'
+alias kdesc='kubectl describe'
+alias kg='kubectl get'
+
+function kpsg(){
+  kubectl get pods | grep $1
+}
