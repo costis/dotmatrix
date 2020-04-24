@@ -16,23 +16,20 @@ set -g pane-base-index 1
 set-option -g history-limit 8000
 
 ## set status bar
-set-option -g status-bg colour234
-set-option -g status-fg colour7
+#set-option -g status-bg colour234
+#set-option -g status-fg colour7
 
-set-option -g status-right '⡇ #(whoami)@#H'
-set-option -g status-left '#[bold] #S#[default] ⡇'
+set-option -g status-style bg=colour239,fg=colour7,dim
+set-window-option -g window-status-current-style fg=colour202,bg=colour239,bright
+
+set-option -g status-right '#(whoami)@#H'
+set-option -g status-left '#[bold] #S#[default]'
 
 set-option -g status-right-length 60
 set-option -g status-left-length 60
 
 # status line timeout 4sec
 set-option -g display-time 8000
-#
-## highlight active window
-set-option status-style bg=colour166
-set-option -g status-style fg=colour15
-# set-window-option -g window-status-current-attr bold
-# set-window-option -g window-status-current-format ' #I #W#F'
 
 bind h select-pane -L
 bind j select-pane -D
@@ -72,7 +69,7 @@ bind c new-window        -c "#{pane_current_path}"
 # toggle status bar visibility
 bind-key S set-option -s status
 
-bind-key '\;' last-window
+#bind-key '\;' last-window
 
 bind-key -n  C-S-Left swap-window -t -1
 bind-key -n C-S-Right swap-window -t +1
