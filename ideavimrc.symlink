@@ -27,3 +27,4 @@ nnoremap g<c-i> <c-i>
 
 set surround
 set rnu
+set ideajoin
