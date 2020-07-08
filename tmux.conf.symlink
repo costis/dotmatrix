@@ -29,10 +29,9 @@ set-option -g status-left-length 60
 set-option -g display-time 8000
 #
 ## highlight active window
-set-option status-style bg=colour166
-set-option -g status-style fg=colour15
-# set-window-option -g window-status-current-attr bold
-# set-window-option -g window-status-current-format ' #I #W#F'
+#set-option status-style bg=colour166
+#set-option -g status-style fg=colour15
+set-window-option -g window-status-current-style "bg=red,fg=colour15"
 
 bind h select-pane -L
 bind j select-pane -D
@@ -72,7 +71,7 @@ bind c new-window        -c "#{pane_current_path}"
 # toggle status bar visibility
 bind-key S set-option -s status
 
-bind-key '\;' last-window
+#bind-key '\;' last-window
 
 bind-key -n  C-S-Left swap-window -t -1
 bind-key -n C-S-Right swap-window -t +1
