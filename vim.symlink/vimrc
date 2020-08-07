@@ -53,6 +53,7 @@ Plug 'nvie/vim-flake8' " python PEP 9 checking
 Plug 'ycm-core/YouCompleteMe'
 Plug 'mileszs/ack.vim'
 Plug 'stephpy/vim-yaml'
+" Plug 'hashivim/vim-terraform'
 call plug#end()
 
 filetype plugin indent on
@@ -95,6 +96,8 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
 " set the leader key
 let mapleader = ","
+
+let g:terraform_fmt_on_save = 1
 
 " Keymaps
 nnoremap <c-c> <ESC> " alternative ESCAPE
@@ -157,7 +160,8 @@ set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
 
 " ALE
 " let g:ale_fixers = {'ruby': ['rubocop']}
-"let g:ale_ruby_rubocop_executable = 'reevoocop'
+let g:ale_ruby_rubocop_executable = 'reevoocop'
+let g:ale_fixers = { 'terraform': ['terraform lint'], 'ruby': 'rubocop' }
 
 " Statusline always visible
 set laststatus=2
@@ -215,7 +219,7 @@ if has('autocmd')
     autocmd!
     " Remove trailing whitespace from various files
     autocmd BufWritePre,FileWritePre *.html,*.rb,*.php,*.xml,*.erb,*.rhtml call StripTrailingWhitespace()
-    autocmd Filetype coffee,ruby,yaml,rake,rb,ru,javascript setlocal ts=2 sw=2 expandtab
+    autocmd Filetype coffee,ruby,yaml,rake,rb,ru,javascript,terraform setlocal ts=2 sw=2 expandtab
     autocmd BufNewFile,BufRead {*.rake,Podfile,Gemfile,Guardfile,Capfile,Rakefile,Thorfile,config.ru} set ft=ruby
     autocmd BufNewFile,BufRead Gemfile.lock set ft=yaml
     autocmd BufNewFile,BufRead *.json set ft=javascript
@@ -303,9 +307,6 @@ endif
 " Search with ack.vim
 nnoremap K :Ack! "\b<C-R><C-W>\b"<CR>
 
-" Syntastic
-let g:syntastic_eruby_ruby_quiet_messages = {'regex': 'useless use of a variable in void context'}
-
 nnoremap <c-w>O :only<CR>
 
 " Ruby options
@@ -385,3 +386,7 @@ set encoding=utf8
 
 nnoremap <Leader>ve :split $MYVIMRC<cr>
 nnoremap <Leader>vs :source $MYVIMRC<cr>
+
+" regenerate ctags
+nnoremap <leader>rt :silent :execute '!ctags -R -f tags --languages=ruby --exclude=.git --exclude=.terraform --exclude=log --exclude=tmp . $(bundle list --paths)'<CR><C-l>
+
