@@ -42,7 +42,7 @@
 
 [user]
 	email = costisp@gmail.com
-	name = Costis Panagiotopoulos
+	name = Costis Pan
 [push]
 	default = simple
 [status]
@@ -54,8 +54,6 @@
 [difftool "icdiff"]
   cmd = /usr/local/bin/icdiff --line-numbers $LOCAL $REMOTE
 [commit]
-  gpgSign = true
-	template = /Users/costis.panagiotopoulos/.stCommitMsg
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
@@ -71,3 +69,5 @@
 	prompt = false
 [log]
 	follow = true
+[pull]
+	ff = only
